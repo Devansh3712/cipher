@@ -7,8 +7,8 @@
 */
 
 #include <string>
-#include "atbash.h"
-#include "caesar.h"
+#include "atbash.hpp"
+#include "caesar.hpp"
 #ifndef CIPHER_H
 #define CIPHER_H
 

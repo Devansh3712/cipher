@@ -9,7 +9,7 @@
 
 #include <cctype>
 #include <string>
-#include "atbash.h"
+#include "atbash.hpp"
 
 /**
     Constructor for the Atbash cipher class.

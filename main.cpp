@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include <string>
-#include "lib/cipher.h"
+#include "lib/cipher.hpp"
 
 // Controls operation of the program
 int main(){

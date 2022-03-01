@@ -8,7 +8,7 @@
 */
 
 #include <string>
-#include "caesar.h"
+#include "caesar.hpp"
 
 /**
     Constructor for the Caesar cipher class.
