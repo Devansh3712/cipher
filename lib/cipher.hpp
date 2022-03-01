@@ -8,6 +8,7 @@
 
 #include <string>
 #include "atbash.hpp"
+#include "binary.hpp"
 #include "caesar.hpp"
 #ifndef CIPHER_H
 #define CIPHER_H
@@ -22,6 +23,7 @@ R"(                                                            )" "\n";
 std::string MENU = R"(MENU)" "\n"
 R"(----)" "\n"
 R"(1. Atbash Cipher)" "\n"
-R"(2. Caesar Cipher)";
+R"(2. Binary Code)" "\n"
+R"(3. Caesar Cipher)";
 
 #endif
