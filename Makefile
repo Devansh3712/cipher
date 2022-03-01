@@ -1,4 +1,4 @@
-DEPS = lib/caesar.cpp
+DEPS = lib/*.cpp
 
 all: cipher
 

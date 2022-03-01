@@ -2,8 +2,8 @@
     Caesar cipher C++ implementation.
     @file caesar.cpp
     @author Devansh Singh
-    @brief Caesar cipher is a substitution cipher in which each letter in the plaintext
-    is replaced by a letter somefixed positions down the alphabet.
+    @brief Caesar cipher is a substitution cipher in which each letter in the
+    plaintext is replaced by a letter at some fixed positions down the alphabet.
     @date 01/03/2022
 */
 
@@ -12,24 +12,24 @@
 
 /**
     Constructor for the Caesar cipher class.
-    @param user_data Data to encrypt
-    @param crypt_key Number of positions to shift
+    @param user_data Data to encrypt/decrypt.
+    @param key Number of positions to shift.
 */
-CaesarCipher::CaesarCipher(std::string user_data, unsigned int crypt_key){
+CaesarCipher::CaesarCipher(std::string user_data, unsigned int key){
     CaesarCipher::data = user_data;
-    CaesarCipher::key = crypt_key;
+    CaesarCipher::offset = key;
 }
 
 /**
     Encrypt the plaintext using the initialized key.
-    @returns Ciphertext
+    @returns Encrypted ciphertext.
 */
 std::string CaesarCipher::encrypt(){
     for(int index = 0; index < CaesarCipher::data.length(); index++){
         if(CaesarCipher::data[index] >= 'A' && CaesarCipher::data[index] <= 'Z'){
-            CaesarCipher::data[index] = (CaesarCipher::data[index] + CaesarCipher::key - 'A') % 26 + 'A';
+            CaesarCipher::data[index] = (CaesarCipher::data[index] + CaesarCipher::offset - 'A') % 26 + 'A';
         }else if(CaesarCipher::data[index] >= 'a' && CaesarCipher::data[index] <= 'z'){
-            CaesarCipher::data[index] = (CaesarCipher::data[index] + CaesarCipher::key - 'a') % 26 + 'a';
+            CaesarCipher::data[index] = (CaesarCipher::data[index] + CaesarCipher::offset - 'a') % 26 + 'a';
         }
     }
     return CaesarCipher::data;
@@ -37,14 +37,14 @@ std::string CaesarCipher::encrypt(){
 
 /**
     Decrypt the ciphertext using the initialized key.
-    @returns Plaintext
+    @returns Decrypted plaintext.
 */
 std::string CaesarCipher::decrypt(){
     for(int index = 0; index < CaesarCipher::data.length(); index++){
         if(CaesarCipher::data[index] >= 'A' && CaesarCipher::data[index] <= 'Z'){
-            CaesarCipher::data[index] = (CaesarCipher::data[index] + (26 - CaesarCipher::key) - 'A') % 26 + 'A';
+            CaesarCipher::data[index] = (CaesarCipher::data[index] + (26 - CaesarCipher::offset) - 'A') % 26 + 'A';
         }else if(CaesarCipher::data[index] >= 'a' && CaesarCipher::data[index] <= 'z'){
-            CaesarCipher::data[index] = (CaesarCipher::data[index] + (26 - CaesarCipher::key) - 'a') % 26 + 'a';
+            CaesarCipher::data[index] = (CaesarCipher::data[index] + (26 - CaesarCipher::offset) - 'a') % 26 + 'a';
         }
     }
     return CaesarCipher::data;

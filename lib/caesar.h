@@ -15,7 +15,7 @@
 class CaesarCipher{
 private:
     std::string data;
-    unsigned int key;
+    unsigned int offset;
 public:
     CaesarCipher(std::string user_data, unsigned int crypt_key);
     std::string encrypt();

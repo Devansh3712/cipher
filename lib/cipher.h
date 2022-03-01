@@ -7,6 +7,7 @@
 */
 
 #include <string>
+#include "atbash.h"
 #include "caesar.h"
 #ifndef CIPHER_H
 #define CIPHER_H
@@ -17,5 +18,10 @@ R"(\ \ \____  \ \ \  \ \  _-/ \ \  __ \  \ \  __\   \ \  __<   )" "\n"
 R"( \ \_____\  \ \_\  \ \_\    \ \_\ \_\  \ \_____\  \ \_\ \_\ )" "\n"
 R"(  \/_____/   \/_/   \/_/     \/_/\/_/   \/_____/   \/_/ /_/ )" "\n"
 R"(                                                            )" "\n";
+
+std::string MENU = R"(MENU)" "\n"
+R"(----)" "\n"
+R"(1. Atbash Cipher)" "\n"
+R"(2. Caesar Cipher)";
 
 #endif
