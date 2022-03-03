@@ -10,6 +10,7 @@
 #include "atbash.hpp"
 #include "binary.hpp"
 #include "caesar.hpp"
+#include "morse.hpp"
 #ifndef CIPHER_H
 #define CIPHER_H
 
@@ -24,6 +25,8 @@ std::string MENU = R"(MENU)" "\n"
 R"(----)" "\n"
 R"(1. Atbash Cipher)" "\n"
 R"(2. Binary Code)" "\n"
-R"(3. Caesar Cipher)";
+R"(3. Caesar Cipher)" "\n"
+R"(4. Morse Code)" "\n"
+R"(5. Exit)";
 
 #endif

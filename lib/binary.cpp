@@ -29,7 +29,7 @@ std::string BinaryCode::encrypt(){
     for(int index = 0; index < BinaryCode::data.length(); index++){
         std::string binary = std::bitset<8>((int)BinaryCode::data[index]).to_string();
         if(index != BinaryCode::data.length() - 1){
-            result += binary + " ";
+            result += binary + std::string(" ");
         }else{
             result += binary;
         }
@@ -53,7 +53,9 @@ std::string BinaryCode::decrypt(){
             current = "";
         }
     }
-    chars.push_back(current);
+    if(current.length()){
+        chars.push_back(current);
+    }
     for(auto binary: chars){
         unsigned long decimal = std::bitset<8>(binary).to_ulong();
         result += (char)decimal;

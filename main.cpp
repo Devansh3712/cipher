@@ -71,6 +71,25 @@ int main(){
                 }
                 break;
             }
+            case 4: {
+                std::string data, crypt_option;
+                std::cout << "cipher> Enter data: ";
+                getline(std::cin, data);
+                MorseCode obj(data);
+                std::cout << "cipher> Encrypt/Decrypt: ";
+                std::cin >> crypt_option;
+                if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
+                    std::cout << "cipher> Encrypted data: " << obj.encrypt() << std::endl;
+                }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
+                    std::cout << "cipher> Decrypted data: " << obj.decrypt() << std::endl;
+                }else{
+                    std::cout << "cipher> [!] Choose a correct option." << std::endl;
+                }
+                break;
+            }
+            case 5:
+                std::cout << "cipher> [+] Terminating program." << std::endl;
+                exit(0);
             default:
                 std::cout << "cipher> [!] Choose a correct option." << std::endl;
                 break;

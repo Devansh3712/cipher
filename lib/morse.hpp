@@ -1,0 +1,36 @@
+/**
+    C++ header file for "morse.cpp".
+    @file morse.hpp
+    @author Devansh Singh
+    @brief Header file for initializing MorseCode class.
+    @date 01/03/2022
+*/
+
+#include <map>
+#include <string>
+#ifndef CAESAR_H
+
+/**
+    Implementation of Morse code cryptography technique.
+*/
+class MorseCode{
+private:
+    std::string data;
+    std::map<char, std::string> dict = {
+        {'a', ".-"}, {'b', "-..."}, {'c', "-.-."},
+        {'d', "-.."}, {'e', "."}, {'f', "..-."},
+        {'g', "--."}, {'h', "...."}, {'i', ".."},
+        {'j', ".---"}, {'k', "-.-"}, {'l', ".-.."},
+        {'m', "--"}, {'n', "-."}, {'o', "---"},
+        {'p', ".--."}, {'q', "--.-"}, {'r', ".-."},
+        {'s', "..."}, {'t', "-"}, {'u', "..-"},
+        {'v', "...-"}, {'w', ".--"}, {'x', "-..-"},
+        {'y', "-.--"}, {'z', "--.."}
+    };
+public:
+    MorseCode(std::string user_data);
+    std::string encrypt();
+    std::string decrypt();
+};
+
+#endif
