@@ -16,8 +16,8 @@
     @param key Number of positions to shift.
 */
 CaesarCipher::CaesarCipher(std::string user_data, unsigned int key){
-    CaesarCipher::data = user_data;
-    CaesarCipher::offset = key;
+    data = user_data;
+    offset = key;
 }
 
 /**
@@ -25,14 +25,14 @@ CaesarCipher::CaesarCipher(std::string user_data, unsigned int key){
     @returns Encrypted ciphertext.
 */
 std::string CaesarCipher::encrypt(){
-    for(int index = 0; index < CaesarCipher::data.length(); index++){
-        if(CaesarCipher::data[index] >= 'A' && CaesarCipher::data[index] <= 'Z'){
-            CaesarCipher::data[index] = (CaesarCipher::data[index] + CaesarCipher::offset - 'A') % 26 + 'A';
-        }else if(CaesarCipher::data[index] >= 'a' && CaesarCipher::data[index] <= 'z'){
-            CaesarCipher::data[index] = (CaesarCipher::data[index] + CaesarCipher::offset - 'a') % 26 + 'a';
+    for(int index = 0; index < data.length(); index++){
+        if(data[index] >= 'A' && data[index] <= 'Z'){
+            data[index] = (data[index] + offset - 'A') % 26 + 'A';
+        }else if(data[index] >= 'a' && data[index] <= 'z'){
+            data[index] = (data[index] + offset - 'a') % 26 + 'a';
         }
     }
-    return CaesarCipher::data;
+    return data;
 }
 
 /**
@@ -40,12 +40,12 @@ std::string CaesarCipher::encrypt(){
     @returns Decrypted plaintext.
 */
 std::string CaesarCipher::decrypt(){
-    for(int index = 0; index < CaesarCipher::data.length(); index++){
-        if(CaesarCipher::data[index] >= 'A' && CaesarCipher::data[index] <= 'Z'){
-            CaesarCipher::data[index] = (CaesarCipher::data[index] + (26 - CaesarCipher::offset) - 'A') % 26 + 'A';
-        }else if(CaesarCipher::data[index] >= 'a' && CaesarCipher::data[index] <= 'z'){
-            CaesarCipher::data[index] = (CaesarCipher::data[index] + (26 - CaesarCipher::offset) - 'a') % 26 + 'a';
+    for(int index = 0; index < data.length(); index++){
+        if(data[index] >= 'A' && data[index] <= 'Z'){
+            data[index] = (data[index] + (26 - offset) - 'A') % 26 + 'A';
+        }else if(data[index] >= 'a' && data[index] <= 'z'){
+            data[index] = (data[index] + (26 - offset) - 'a') % 26 + 'a';
         }
     }
-    return CaesarCipher::data;
+    return data;
 }
