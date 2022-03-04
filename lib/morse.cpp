@@ -17,7 +17,7 @@
     @param user_data Data to encrypt/decrypt.
 */
 MorseCode::MorseCode(std::string user_data){
-    MorseCode::data = user_data;
+    data = user_data;
 }
 
 /**
@@ -26,29 +26,20 @@ MorseCode::MorseCode(std::string user_data){
 */
 std::string MorseCode::encrypt(){
     std::string result = "";
-    for(int index = 0; index < MorseCode::data.length(); index++){
-        if(MorseCode::data[index] >= 'A' && MorseCode::data[index] <= 'Z'){
-            if(index != MorseCode::data.length() - 1){
-                result += MorseCode::dict[std::tolower(MorseCode::data[index])] + std::string("|");
-            }else{
-                result += MorseCode::dict[std::tolower(MorseCode::data[index])];
-            }
-        }else if(MorseCode::data[index] >= 'a' && MorseCode::data[index] <= 'z'){
-            if(index != MorseCode::data.length() - 1){
-                result += MorseCode::dict[MorseCode::data[index]] + std::string("|");
-            }else{
-                result += MorseCode::dict[MorseCode::data[index]];
-            }
+    for(int index = 0; index < data.length(); index++){
+        if(data[index] >= 'A' && data[index] <= 'Z'){
+            result += dict[std::tolower(data[index])];
+        }else if(data[index] >= 'a' && data[index] <= 'z'){
+            result += dict[data[index]];
         }else{
-            if(index != MorseCode::data.length() - 1){
-                result += MorseCode::data[index] + std::string("|");
-            }else{
-                result += MorseCode::data[index];
-            }
+            result += data[index];
+        }
+        if(index != data.length() - 1){
+            result += std::string("|");
         }
     }
-    MorseCode::data = result;
-    return MorseCode::data;
+    data = result;
+    return data;
 }
 
 /**
@@ -58,9 +49,9 @@ std::string MorseCode::encrypt(){
 std::string MorseCode::decrypt(){
     std::vector<std::string> chars;
     std::string current = "", result = "";
-    for(int index = 0; index < MorseCode::data.length(); index++){
-        if(MorseCode::data[index] != '|'){
-            current += MorseCode::data[index];
+    for(int index = 0; index < data.length(); index++){
+        if(data[index] != '|'){
+            current += data[index];
         }else{
             chars.push_back(current);
             current = "";
@@ -71,7 +62,7 @@ std::string MorseCode::decrypt(){
     }
     for(auto morse: chars){
         bool found = false;
-        for(auto item: MorseCode::dict){
+        for(auto item: dict){
             if(item.second == morse){
                 result += item.first;
                 found = true;
@@ -82,6 +73,6 @@ std::string MorseCode::decrypt(){
             result += morse;
         }
     }
-    MorseCode::data = result;
-    return MorseCode::data;
+    data = result;
+    return data;
 }
