@@ -87,7 +87,23 @@ int main(){
                 }
                 break;
             }
-            case 5:
+            case 5: {
+                std::string data, crypt_option;
+                std::cout << "cipher> Enter data: ";
+                getline(std::cin, data);
+                NATOPhoneticCode obj(data);
+                std::cout << "cipher> Encrypt/Decrypt: ";
+                std::cin >> crypt_option;
+                if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
+                    std::cout << "cipher> Encrypted data: " << obj.encrypt() << std::endl;
+                }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
+                    std::cout << "cipher> Decrypted data: " << obj.decrypt() << std::endl;
+                }else{
+                    std::cout << "cipher> [!] Choose a correct option." << std::endl;
+                }
+                break;
+            }
+            case 6:
                 std::cout << "cipher> [+] Terminating program." << std::endl;
                 exit(0);
             default:

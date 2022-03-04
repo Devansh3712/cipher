@@ -1,22 +1,22 @@
 /**
-    Morse code C++ implementation.
-    @file morse.cpp
+    NATO phonetic code C++ implementation.
+    @file nato.cpp
     @author Devansh Singh
-    @brief Morse code is a cipher where letters of plaintext are represented as
-    sequences of dots and dashes.
-    @date 03/03/2022
+    @brief NATO phonetic code is an alphabet created for oral
+    telecommunications, in order to spell words correctly.
+    @date 04/03/2022
 */
 
 #include <cctype>
 #include <string>
 #include <vector>
-#include "morse.hpp"
+#include "nato.hpp"
 
 /**
-    Constructor for the MorseCode class.
+    Constructor for the NATOPhoneticCode class.
     @param user_data Data to encrypt/decrypt.
 */
-MorseCode::MorseCode(std::string user_data){
+NATOPhoneticCode::NATOPhoneticCode(std::string user_data){
     data = user_data;
 }
 
@@ -24,11 +24,13 @@ MorseCode::MorseCode(std::string user_data){
     Encrypt the plaintext.
     @returns Encrypted ciphertext.
 */
-std::string MorseCode::encrypt(){
+std::string NATOPhoneticCode::encrypt(){
     std::string result = "";
     for(int index = 0; index < data.length(); index++){
         if(data[index] >= 'A' && data[index] <= 'Z'){
-            result += dict[std::tolower(data[index])];
+            std::string current = dict[std::tolower(data[index])];
+            current[0] = std::toupper(current[0]);
+            result += current;
         }else if(data[index] >= 'a' && data[index] <= 'z'){
             result += dict[data[index]];
         }else{
@@ -56,7 +58,7 @@ std::string MorseCode::encrypt(){
     Decrypt the ciphertext.
     @returns Decrypted plaintext.
 */
-std::string MorseCode::decrypt(){
+std::string NATOPhoneticCode::decrypt(){
     std::vector<std::string> chars;
     std::string current = "", result = "";
     for(int index = 0; index < data.length(); index++){
@@ -70,18 +72,8 @@ std::string MorseCode::decrypt(){
     if(current.length()){
         chars.push_back(current);
     }
-    for(auto morse: chars){
-        bool found = false;
-        for(auto item: dict){
-            if(item.second == morse){
-                result += item.first;
-                found = true;
-                break;
-            }
-        }
-        if(!found){
-            result += morse;
-        }
+    for(auto item: chars){
+        result += item[0];
     }
     data = result;
     return data;

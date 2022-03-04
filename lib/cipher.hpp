@@ -11,6 +11,7 @@
 #include "binary.hpp"
 #include "caesar.hpp"
 #include "morse.hpp"
+#include "nato.hpp"
 #ifndef CIPHER_H
 #define CIPHER_H
 
@@ -27,6 +28,7 @@ R"(1. Atbash Cipher)" "\n"
 R"(2. Binary Code)" "\n"
 R"(3. Caesar Cipher)" "\n"
 R"(4. Morse Code)" "\n"
-R"(5. Exit)";
+R"(5. NATO Phonetic Code)" "\n"
+R"(6. Exit)";
 
 #endif
