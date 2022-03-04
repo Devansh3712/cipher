@@ -16,8 +16,8 @@
     @param user_data Data to encrypt/decrypt.
 */
 AtbashCipher::AtbashCipher(std::string user_data){
-    AtbashCipher::data = user_data;
-    AtbashCipher::create_dict();
+    data = user_data;
+    create_dict();
 }
 
 /**
@@ -25,14 +25,14 @@ AtbashCipher::AtbashCipher(std::string user_data){
     @returns Encrypted ciphertext.
 */
 std::string AtbashCipher::encrypt(){
-    for(int index = 0; index < AtbashCipher::data.length(); index++){
-        if(AtbashCipher::data[index] >= 'A' && AtbashCipher::data[index] <= 'Z'){
-            AtbashCipher::data[index] = AtbashCipher::dict[AtbashCipher::data[index]];
-        }else if(AtbashCipher::data[index] >= 'a' && AtbashCipher::data[index] <= 'z'){
-            AtbashCipher::data[index] = std::tolower(AtbashCipher::dict[std::toupper(AtbashCipher::data[index])]);
+    for(int index = 0; index < data.length(); index++){
+        if(data[index] >= 'A' && data[index] <= 'Z'){
+            data[index] = dict[data[index]];
+        }else if(data[index] >= 'a' && data[index] <= 'z'){
+            data[index] = std::tolower(dict[std::toupper(data[index])]);
         }
     }
-    return AtbashCipher::data;
+    return data;
 }
 
 /**
@@ -40,12 +40,12 @@ std::string AtbashCipher::encrypt(){
     @returns Decrypted plaintext.
 */
 std::string AtbashCipher::decrypt(){
-    for(int index = 0; index < AtbashCipher::data.length(); index++){
-        if(AtbashCipher::data[index] >= 'A' && AtbashCipher::data[index] <= 'Z'){
-            AtbashCipher::data[index] = AtbashCipher::dict[AtbashCipher::data[index]];
-        }else if(AtbashCipher::data[index] >= 'a' && AtbashCipher::data[index] <= 'z'){
-            AtbashCipher::data[index] = std::tolower(AtbashCipher::dict[std::toupper(AtbashCipher::data[index])]);
+    for(int index = 0; index < data.length(); index++){
+        if(data[index] >= 'A' && data[index] <= 'Z'){
+            data[index] = dict[data[index]];
+        }else if(data[index] >= 'a' && data[index] <= 'z'){
+            data[index] = std::tolower(dict[std::toupper(data[index])]);
         }
     }
-    return AtbashCipher::data;
+    return data;
 }
