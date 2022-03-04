@@ -17,7 +17,7 @@
     @param user_data Data to encrypt/decrypt.
 */
 BinaryCode::BinaryCode(std::string user_data){
-    BinaryCode::data = user_data;
+    data = user_data;
 }
 
 /**
@@ -26,16 +26,16 @@ BinaryCode::BinaryCode(std::string user_data){
 */
 std::string BinaryCode::encrypt(){
     std::string result = "";
-    for(int index = 0; index < BinaryCode::data.length(); index++){
-        std::string binary = std::bitset<8>((int)BinaryCode::data[index]).to_string();
-        if(index != BinaryCode::data.length() - 1){
+    for(int index = 0; index < data.length(); index++){
+        std::string binary = std::bitset<8>((int)data[index]).to_string();
+        if(index != data.length() - 1){
             result += binary + std::string(" ");
         }else{
             result += binary;
         }
     }
-    BinaryCode::data = result;
-    return BinaryCode::data;
+    data = result;
+    return data;
 }
 
 /**
@@ -45,9 +45,9 @@ std::string BinaryCode::encrypt(){
 std::string BinaryCode::decrypt(){
     std::vector<std::string> chars;
     std::string current = "", result = "";
-    for(int index = 0; index < BinaryCode::data.length(); index++){
-        if(BinaryCode::data[index] != ' '){
-            current += BinaryCode::data[index];
+    for(int index = 0; index < data.length(); index++){
+        if(data[index] != ' '){
+            current += data[index];
         }else{
             chars.push_back(current);
             current = "";
@@ -60,6 +60,6 @@ std::string BinaryCode::decrypt(){
         unsigned long decimal = std::bitset<8>(binary).to_ulong();
         result += (char)decimal;
     }
-    BinaryCode::data = result;
-    return BinaryCode::data;
+    data = result;
+    return data;
 }
