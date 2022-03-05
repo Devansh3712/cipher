@@ -1,22 +1,22 @@
 /**
-    Octal code C++ implementation.
-    @file octal.cpp
+    Hex code C++ implementation.
+    @file hex.cpp
     @author Devansh Singh
-    @brief Octal code is a cipher where the ascii code of characters of the
-    plaintext are converted to their octal equivalent.
+    @brief Hex code is a cipher where the ascii code of characters of the
+    plaintext are converted to their hexadecimal equivalent.
     @date 05/03/2022
 */
 
 #include <sstream>
 #include <string>
 #include <vector>
-#include "octal.hpp"
+#include "hex.hpp"
 
 /**
-    Constructor for the OctalCode class.
+    Constructor for the HexCode class.
     @param user_data Data to encrypt/decrypt.
 */
-OctalCode::OctalCode(std::string user_data){
+HexCode::HexCode(std::string user_data){
     data = user_data;
 }
 
@@ -24,12 +24,12 @@ OctalCode::OctalCode(std::string user_data){
     Encrypt the plaintext.
     @returns Encrypted ciphertext.
 */
-std::string OctalCode::encrypt(){
+std::string HexCode::encrypt(){
     std::string result = "";
     for(int index = 0; index < data.length(); index++){
-        std::ostringstream octal;
-        octal << std::oct << (int)data[index];
-        result += octal.str();
+        std::ostringstream hexadecimal;
+        hexadecimal << std::hex << (int)data[index];
+        result += hexadecimal.str();
         if(index != data.length() - 1){
             result += std::string(" ");
         }
@@ -42,7 +42,7 @@ std::string OctalCode::encrypt(){
     Decrypt the ciphertext.
     @returns Decrypted plaintext.
 */
-std::string OctalCode::decrypt(){
+std::string HexCode::decrypt(){
     std::vector<std::string> chars;
     std::string current = "", result = "";
     for(int index = 0; index < data.length(); index++){
@@ -59,7 +59,7 @@ std::string OctalCode::decrypt(){
     for(auto item: chars){
         std::ostringstream decimal;
         int num;
-        std::istringstream(item) >> std::oct >> num;
+        std::istringstream(item) >> std::hex >> num;
         decimal << std::dec << num;
         result += (char)std::stoi(decimal.str());
     }

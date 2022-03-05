@@ -91,7 +91,7 @@ int main(){
                 std::string data, crypt_option;
                 std::cout << "cipher> Enter data: ";
                 getline(std::cin, data);
-                MorseCode obj(data);
+                HexCode obj(data);
                 std::cout << "cipher> Encrypt/Decrypt: ";
                 std::cin >> crypt_option;
                 if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
@@ -107,7 +107,7 @@ int main(){
                 std::string data, crypt_option;
                 std::cout << "cipher> Enter data: ";
                 getline(std::cin, data);
-                NATOPhoneticCode obj(data);
+                MorseCode obj(data);
                 std::cout << "cipher> Encrypt/Decrypt: ";
                 std::cin >> crypt_option;
                 if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
@@ -123,7 +123,7 @@ int main(){
                 std::string data, crypt_option;
                 std::cout << "cipher> Enter data: ";
                 getline(std::cin, data);
-                OctalCode obj(data);
+                NATOPhoneticCode obj(data);
                 std::cout << "cipher> Encrypt/Decrypt: ";
                 std::cin >> crypt_option;
                 if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
@@ -136,6 +136,22 @@ int main(){
                 break;
             }
             case 8: {
+                std::string data, crypt_option;
+                std::cout << "cipher> Enter data: ";
+                getline(std::cin, data);
+                OctalCode obj(data);
+                std::cout << "cipher> Encrypt/Decrypt: ";
+                std::cin >> crypt_option;
+                if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
+                    std::cout << "cipher> Encrypted data: " << obj.encrypt() << std::endl;
+                }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
+                    std::cout << "cipher> Decrypted data: " << obj.decrypt() << std::endl;
+                }else{
+                    std::cout << "cipher> [!] Choose a correct option." << std::endl;
+                }
+                break;
+            }
+            case 9: {
                 std::string data, key, crypt_option;
                 std::cout << "cipher> Enter data: ";
                 getline(std::cin, data);
@@ -153,7 +169,7 @@ int main(){
                 }
                 break;
             }
-            case 9:
+            case 10:
                 std::cout << "cipher> [+] Terminating program." << std::endl;
                 exit(0);
             default:
