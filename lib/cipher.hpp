@@ -7,6 +7,7 @@
 */
 
 #include <string>
+#include "ascii.hpp"
 #include "atbash.hpp"
 #include "binary.hpp"
 #include "caesar.hpp"
@@ -24,11 +25,12 @@ R"(                                                            )" "\n";
 
 std::string MENU = R"(MENU)" "\n"
 R"(----)" "\n"
-R"(1. Atbash Cipher)" "\n"
-R"(2. Binary Code)" "\n"
-R"(3. Caesar Cipher)" "\n"
-R"(4. Morse Code)" "\n"
-R"(5. NATO Phonetic Code)" "\n"
-R"(6. Exit)";
+R"(1. ASCII Code)" "\n"
+R"(2. Atbash Cipher)" "\n"
+R"(3. Binary Code)" "\n"
+R"(4. Caesar Cipher)" "\n"
+R"(5. Morse Code)" "\n"
+R"(6. NATO Phonetic Code)" "\n"
+R"(7. Exit)";
 
 #endif

@@ -1,22 +1,21 @@
 /**
-    Binary code C++ implementation.
+    ASCII code C++ implementation.
     @file binary.cpp
     @author Devansh Singh
-    @brief Binary code is a cipher where the ascii code of characters of the
-    plaintext are converted to their binary equivalent.
+    @brief ASCII code is a cipher where the characters of the plaintext are
+    converted to their ASCII equivalent.
     @date 01/03/2022
 */
 
-#include <bitset>
 #include <string>
 #include <vector>
-#include "binary.hpp"
+#include "ascii.hpp"
 
 /**
-    Constructor for the BinaryCode class.
+    Constructor for the ASCIICode class.
     @param user_data Data to encrypt/decrypt.
 */
-BinaryCode::BinaryCode(std::string user_data){
+ASCIICode::ASCIICode(std::string user_data){
     data = user_data;
 }
 
@@ -24,11 +23,10 @@ BinaryCode::BinaryCode(std::string user_data){
     Encrypt the plaintext.
     @returns Encrypted ciphertext.
 */
-std::string BinaryCode::encrypt(){
+std::string ASCIICode::encrypt(){
     std::string result = "";
     for(int index = 0; index < data.length(); index++){
-        std::string binary = std::bitset<8>((int)data[index]).to_string();
-        result += binary;
+        result += std::to_string((int)data[index]);
         if(index != data.length() - 1){
             result += std::string(" ");
         }
@@ -41,7 +39,7 @@ std::string BinaryCode::encrypt(){
     Decrypt the ciphertext.
     @returns Decrypted plaintext.
 */
-std::string BinaryCode::decrypt(){
+std::string ASCIICode::decrypt(){
     std::vector<std::string> chars;
     std::string current = "", result = "";
     for(int index = 0; index < data.length(); index++){
@@ -55,9 +53,8 @@ std::string BinaryCode::decrypt(){
     if(current.length()){
         chars.push_back(current);
     }
-    for(auto binary: chars){
-        unsigned long decimal = std::bitset<8>(binary).to_ulong();
-        result += (char)decimal;
+    for(auto item: chars){
+        result += (char)std::stoi(item);
     }
     data = result;
     return data;
