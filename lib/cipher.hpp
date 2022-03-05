@@ -13,6 +13,7 @@
 #include "caesar.hpp"
 #include "morse.hpp"
 #include "nato.hpp"
+#include "octal.hpp"
 #include "vigenere.hpp"
 #ifndef CIPHER_H
 #define CIPHER_H
@@ -32,7 +33,8 @@ R"(3. Binary Code)" "\n"
 R"(4. Caesar Cipher)" "\n"
 R"(5. Morse Code)" "\n"
 R"(6. NATO Phonetic Code)" "\n"
-R"(7. Vigenere Cipher)" "\n"
-R"(8. Exit)";
+R"(7. Octal Code)" "\n"
+R"(8. Vigenere Cipher)" "\n"
+R"(9. Exit)";
 
 #endif
