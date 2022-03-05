@@ -119,7 +119,25 @@ int main(){
                 }
                 break;
             }
-            case 7:
+            case 7: {
+                std::string data, key, crypt_option;
+                std::cout << "cipher> Enter data: ";
+                getline(std::cin, data);
+                std::cout << "cipher> Enter key: ";
+                std::cin >> key;
+                VigenereCipher obj(data, key);
+                std::cout << "cipher> Encrypt/Decrypt: ";
+                std::cin >> crypt_option;
+                if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
+                    std::cout << "cipher> Encrypted data: " << obj.encrypt() << std::endl;
+                }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
+                    std::cout << "cipher> Decrypted data: " << obj.decrypt() << std::endl;
+                }else{
+                    std::cout << "cipher> [!] Choose a correct option." << std::endl;
+                }
+                break;
+            }
+            case 8:
                 std::cout << "cipher> [+] Terminating program." << std::endl;
                 exit(0);
             default:
