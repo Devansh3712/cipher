@@ -7,7 +7,8 @@
 */
 
 #include <string>
-#ifndef CAESAR_H
+#ifndef CAESAR_HPP
+#define CAESAR_HPP
 
 /**
     Implementation of Caesar cipher cryptography technique.

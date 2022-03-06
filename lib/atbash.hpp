@@ -8,7 +8,8 @@
 
 #include <map>
 #include <string>
-#ifndef ATBASH_H
+#ifndef ATBASH_HPP
+#define ATBASH_HPP
 
 /**
     Implementation of Atbash cipher cryptography technique.

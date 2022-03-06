@@ -8,7 +8,8 @@
 
 #include <map>
 #include <string>
-#ifndef NATO_H
+#ifndef NATO_HPP
+#define NATO_HPP
 
 /**
     Implementation of NATO phonetic code cryptography technique.

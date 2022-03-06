@@ -7,7 +7,8 @@
 */
 
 #include <string>
-#ifndef VIGENERE_H
+#ifndef VIGENERE_HPP
+#define VIGENERE_HPP
 
 /**
     Implementation of Vigenere cipher cryptography technique.

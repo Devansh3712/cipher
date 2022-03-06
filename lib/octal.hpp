@@ -7,7 +7,8 @@
 */
 
 #include <string>
-#ifndef OCTAL_H
+#ifndef OCTAL_HPP
+#define OCTAL_HPP
 
 /**
     Implementation of Octal code cryptography technique.

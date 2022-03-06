@@ -7,7 +7,8 @@
 */
 
 #include <string>
-#ifndef ASCII_H
+#ifndef ASCII_HPP
+#define ASCII_HPP
 
 /**
     Implementation of ASCII code cryptography technique.

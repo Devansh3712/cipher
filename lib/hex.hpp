@@ -7,7 +7,8 @@
 */
 
 #include <string>
-#ifndef HEX_H
+#ifndef HEX_HPP
+#define HEX_HPP
 
 /**
     Implementation of Hex code cryptography technique.

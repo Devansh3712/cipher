@@ -8,7 +8,8 @@
 
 #include <map>
 #include <string>
-#ifndef CAESAR_H
+#ifndef CAESAR_HPP
+#define CAESAR_HPP
 
 /**
     Implementation of Morse code cryptography technique.

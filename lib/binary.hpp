@@ -7,7 +7,8 @@
 */
 
 #include <string>
-#ifndef BINARY_H
+#ifndef BINARY_HPP
+#define BINARY_HPP
 
 /**
     Implementation of Binary code cryptography technique.
