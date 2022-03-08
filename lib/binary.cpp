@@ -11,12 +11,13 @@
 #include <string>
 #include <vector>
 #include "binary.hpp"
+#include "fileio.hpp"
 
 /**
     Constructor for the BinaryCode class.
     @param user_data Data to encrypt/decrypt.
 */
-BinaryCode::BinaryCode(std::string user_data){
+BinaryCode::BinaryCode(std::string user_data = ""){
     data = user_data;
 }
 
@@ -35,6 +36,17 @@ std::string BinaryCode::encrypt(){
     }
     data = result;
     return data;
+}
+
+/**
+    Encrypt the plaintext from a text file.
+    @returns True if ciphertext is created else false.
+*/
+bool BinaryCode::encrypt_file(std::string file_path){
+    FileIO file(file_path);
+    data = file.read();
+    data = encrypt();
+    return file.write(data);
 }
 
 /**
@@ -61,4 +73,15 @@ std::string BinaryCode::decrypt(){
     }
     data = result;
     return data;
+}
+
+/**
+    Decrypt the ciphertext from a text file.
+    @returns True if plaintext is created else false.
+*/
+bool BinaryCode::decrypt_file(std::string file_path){
+    FileIO file(file_path);
+    data = file.read();
+    data = decrypt();
+    return file.write(data);
 }
