@@ -10,12 +10,13 @@
 #include <cctype>
 #include <string>
 #include "atbash.hpp"
+#include "fileio.hpp"
 
 /**
     Constructor for the Atbash cipher class.
     @param user_data Data to encrypt/decrypt.
 */
-AtbashCipher::AtbashCipher(std::string user_data){
+AtbashCipher::AtbashCipher(std::string user_data = ""){
     data = user_data;
     create_dict();
 }
@@ -36,6 +37,17 @@ std::string AtbashCipher::encrypt(){
 }
 
 /**
+    Encrypt the plaintext from a text file.
+    @returns True if ciphertext is created else false.
+*/
+bool AtbashCipher::encrypt_file(std::string file_path){
+    FileIO file(file_path);
+    data = file.read();
+    data = encrypt();
+    return file.write(data);
+}
+
+/**
     Decrypt the ciphertext.
     @returns Decrypted plaintext.
 */
@@ -48,4 +60,15 @@ std::string AtbashCipher::decrypt(){
         }
     }
     return data;
+}
+
+/**
+    Decrypt the ciphertext from a text file.
+    @returns True if plaintext is created else false.
+*/
+bool AtbashCipher::decrypt_file(std::string file_path){
+    FileIO file(file_path);
+    data = file.read();
+    data = decrypt();
+    return file.write(data);
 }

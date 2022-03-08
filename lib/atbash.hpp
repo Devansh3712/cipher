@@ -8,6 +8,7 @@
 
 #include <map>
 #include <string>
+#include "fileio.hpp"
 #ifndef ATBASH_HPP
 #define ATBASH_HPP
 
@@ -27,10 +28,13 @@ private:
             dict[(char)left++] = (char)right--;
         }
     }
+    friend class FileIO;
 public:
     AtbashCipher(std::string user_data);
     std::string encrypt();
     std::string decrypt();
+    bool encrypt_file(std::string file_path);
+    bool decrypt_file(std::string file_path);
 };
 
 #endif
