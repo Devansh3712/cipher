@@ -10,12 +10,13 @@
 #include <string>
 #include <vector>
 #include "ascii.hpp"
+#include "fileio.hpp"
 
 /**
     Constructor for the ASCIICode class.
     @param user_data Data to encrypt/decrypt.
 */
-ASCIICode::ASCIICode(std::string user_data){
+ASCIICode::ASCIICode(std::string user_data = ""){
     data = user_data;
 }
 
@@ -33,6 +34,17 @@ std::string ASCIICode::encrypt(){
     }
     data = result;
     return data;
+}
+
+/**
+    Encrypt the plaintext from a text file.
+    @returns True if ciphertext is created else false.
+*/
+bool ASCIICode::encrypt_file(std::string file_path){
+    FileIO file(file_path);
+    data = file.read();
+    data = encrypt();
+    return file.write(data);
 }
 
 /**
@@ -58,4 +70,15 @@ std::string ASCIICode::decrypt(){
     }
     data = result;
     return data;
+}
+
+/**
+    Decrypt the ciphertext from a text file.
+    @returns True if plaintext is created else false.
+*/
+bool ASCIICode::decrypt_file(std::string file_path){
+    FileIO file(file_path);
+    data = file.read();
+    data = decrypt();
+    return file.write(data);
 }

@@ -11,6 +11,7 @@
 #include "atbash.hpp"
 #include "binary.hpp"
 #include "caesar.hpp"
+#include "fileio.hpp"
 #include "hex.hpp"
 #include "morse.hpp"
 #include "nato.hpp"

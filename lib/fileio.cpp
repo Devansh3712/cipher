@@ -1,6 +1,6 @@
 /**
     File Input/Output.
-    @file files.cpp
+    @file fileio.cpp
     @author Devansh Singh
     @brief Read and write to text files.
     @date 06/03/2022
@@ -9,7 +9,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include "files.hpp"
+#include "fileio.hpp"
 
 /**
     Constructor for the FileIO class.
