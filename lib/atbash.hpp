@@ -6,6 +6,7 @@
     @date 01/03/2022
 */
 
+#include <iostream>
 #include <map>
 #include <string>
 #include "fileio.hpp"
@@ -30,7 +31,10 @@ private:
         }
     }
 public:
+    AtbashCipher();
     AtbashCipher(std::string user_data, bool is_file=false);
+    friend std::ostream& operator<<(std::ostream &output, AtbashCipher &obj);
+    friend std::istream& operator>>(std::istream &input, AtbashCipher &obj);
     std::string encrypt();
     std::string decrypt();
 };
