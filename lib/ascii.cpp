@@ -7,9 +7,15 @@
     @date 01/03/2022
 */
 
-#include <string>
 #include <vector>
 #include "ascii.hpp"
+
+/**
+    Default constructor for the ASCIICode class.
+*/
+ASCIICode::ASCIICode(){
+    is_file = false;
+}
 
 /**
     Constructor for the ASCIICode class.
@@ -24,6 +30,28 @@ ASCIICode::ASCIICode(std::string data, bool is_file){
         this->data = data;
         this->is_file = false;
     }
+}
+
+/**
+    Overload extraction (<<) operator for displaying data.
+    @param output Reference to output stream.
+    @param obj Reference to ASCIICode object.
+    @returns Reference to output stream.
+*/
+std::ostream& operator<<(std::ostream &output, ASCIICode &obj){
+    output << obj.data;
+    return output;
+}
+
+/**
+    Overload insertion (>>) operator for taking data from user.
+    @param input Reference to input stream.
+    @param obj Reference to ASCIICode object.
+    @returns Reference to input stream.
+*/
+std::istream& operator>>(std::istream &input, ASCIICode &obj){
+    std::getline(input, obj.data);
+    return input;
 }
 
 /**
