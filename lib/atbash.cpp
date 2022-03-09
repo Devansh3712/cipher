@@ -12,7 +12,7 @@
 #include "fileio.hpp"
 
 /**
-    Default constructor for the ASCIICode class.
+    Default constructor for the AtbashCipher class.
 */
 AtbashCipher::AtbashCipher(){
     is_file = false;
@@ -20,7 +20,7 @@ AtbashCipher::AtbashCipher(){
 }
 
 /**
-    Constructor for the Atbash cipher class.
+    Parameterized constructor for the Atbash cipher class.
     @param data Data to encrypt/decrypt.
     @param is_file Read/Write from a file. Defaults to false.
 */
@@ -38,7 +38,7 @@ AtbashCipher::AtbashCipher(std::string data, bool is_file){
 /**
     Overload extraction (<<) operator for displaying data.
     @param output Reference to output stream.
-    @param obj Reference to ASCIICode object.
+    @param obj Reference to AtbashCipher object.
     @returns Reference to output stream.
 */
 std::ostream& operator<<(std::ostream &output, AtbashCipher &obj){
@@ -49,7 +49,7 @@ std::ostream& operator<<(std::ostream &output, AtbashCipher &obj){
 /**
     Overload insertion (>>) operator for taking data from user.
     @param input Reference to input stream.
-    @param obj Reference to ASCIICode object.
+    @param obj Reference to AtbashCipher object.
     @returns Reference to input stream.
 */
 std::istream& operator>>(std::istream &input, AtbashCipher &obj){

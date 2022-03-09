@@ -18,7 +18,7 @@ ASCIICode::ASCIICode(){
 }
 
 /**
-    Constructor for the ASCIICode class.
+    Parameterized constructor for the ASCIICode class.
     @param data Data to encrypt/decrypt.
     @param is_file Read/Write from a file. Defaults to false.
 */

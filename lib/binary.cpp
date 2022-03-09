@@ -8,13 +8,19 @@
 */
 
 #include <bitset>
-#include <string>
 #include <vector>
 #include "binary.hpp"
 #include "fileio.hpp"
 
 /**
-    Constructor for the BinaryCode class.
+    Default constructor for the BinaryCode class.
+*/
+BinaryCode::BinaryCode(){
+    is_file = false;
+}
+
+/**
+    Parameterized constructor for the BinaryCode class.
     @param data Data to encrypt/decrypt.
     @param is_file Read/Write from a file. Defaults to false.
 */
@@ -26,6 +32,28 @@ BinaryCode::BinaryCode(std::string data, bool is_file){
         this->data = data;
         this->is_file = false;
     }
+}
+
+/**
+    Overload extraction (<<) operator for displaying data.
+    @param output Reference to output stream.
+    @param obj Reference to BinaryCode object.
+    @returns Reference to output stream.
+*/
+std::ostream& operator<<(std::ostream &output, BinaryCode &obj){
+    output << obj.data;
+    return output;
+}
+
+/**
+    Overload insertion (>>) operator for taking data from user.
+    @param input Reference to input stream.
+    @param obj Reference to BinaryCode object.
+    @returns Reference to input stream.
+*/
+std::istream& operator>>(std::istream &input, BinaryCode &obj){
+    std::getline(input, obj.data);
+    return input;
 }
 
 /**
