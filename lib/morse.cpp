@@ -14,10 +14,17 @@
 
 /**
     Constructor for the MorseCode class.
-    @param user_data Data to encrypt/decrypt.
+    @param data Data to encrypt/decrypt.
+    @param is_file Read/Write from a file. Defaults to false.
 */
-MorseCode::MorseCode(std::string user_data){
-    data = user_data;
+MorseCode::MorseCode(std::string data, bool is_file){
+    if(is_file){
+        file_path = data;
+        this->is_file = true;
+    }else{
+        this->data = data;
+        this->is_file = false;
+    }
 }
 
 /**
@@ -25,6 +32,10 @@ MorseCode::MorseCode(std::string user_data){
     @returns Encrypted ciphertext.
 */
 std::string MorseCode::encrypt(){
+    if(is_file){
+        FileIO file(file_path);
+        data = file.read();
+    }
     std::string result = "";
     for(int index = 0; index < data.length(); index++){
         if(data[index] >= 'A' && data[index] <= 'Z'){
@@ -49,6 +60,10 @@ std::string MorseCode::encrypt(){
         }
     }
     data = result;
+    if(is_file){
+        FileIO file(file_path);
+        return (file.write(data) == true ? "0" : "1");
+    }
     return data;
 }
 
@@ -57,6 +72,10 @@ std::string MorseCode::encrypt(){
     @returns Decrypted plaintext.
 */
 std::string MorseCode::decrypt(){
+    if(is_file){
+        FileIO file(file_path);
+        data = file.read();
+    }
     std::vector<std::string> chars;
     std::string current = "", result = "";
     for(int index = 0; index < data.length(); index++){
@@ -84,5 +103,9 @@ std::string MorseCode::decrypt(){
         }
     }
     data = result;
+    if(is_file){
+        FileIO file(file_path);
+        return (file.write(data) == true ? "0" : "1");
+    }
     return data;
 }

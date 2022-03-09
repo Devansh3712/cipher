@@ -14,7 +14,7 @@
 
 /**
     Constructor for the Atbash cipher class.
-    @param user_data Data to encrypt/decrypt.
+    @param data Data to encrypt/decrypt.
     @param is_file Read/Write from a file. Defaults to false.
 */
 AtbashCipher::AtbashCipher(std::string data, bool is_file){

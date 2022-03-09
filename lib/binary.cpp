@@ -15,7 +15,7 @@
 
 /**
     Constructor for the BinaryCode class.
-    @param user_data Data to encrypt/decrypt.
+    @param data Data to encrypt/decrypt.
     @param is_file Read/Write from a file. Defaults to false.
 */
 BinaryCode::BinaryCode(std::string data, bool is_file){

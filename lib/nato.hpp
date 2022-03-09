@@ -8,6 +8,7 @@
 
 #include <map>
 #include <string>
+#include "fileio.hpp"
 #ifndef NATO_HPP
 #define NATO_HPP
 
@@ -16,7 +17,8 @@
 */
 class NATOPhoneticCode{
 private:
-    std::string data;
+    std::string data, file_path;
+    bool is_file;
     std::map<char, std::string> dict = {
         {'a', "alpha"}, {'b', "bravo"}, {'c', "charlie"},
         {'d', "delta"}, {'e', "echo"}, {'f', "foxtrot"},
@@ -33,7 +35,7 @@ private:
         {'-', "dash"}, {'.', "stop"}
     };
 public:
-    NATOPhoneticCode(std::string user_data);
+    NATOPhoneticCode(std::string data, bool is_file=false);
     std::string encrypt();
     std::string decrypt();
 };

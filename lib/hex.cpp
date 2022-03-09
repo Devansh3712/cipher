@@ -14,10 +14,17 @@
 
 /**
     Constructor for the HexCode class.
-    @param user_data Data to encrypt/decrypt.
+    @param data Data to encrypt/decrypt.
+    @param is_file Read/Write from a file. Defaults to false.
 */
-HexCode::HexCode(std::string user_data){
-    data = user_data;
+HexCode::HexCode(std::string data, bool is_file){
+    if(is_file){
+        file_path = data;
+        this->is_file = true;
+    }else{
+        this->data = data;
+        this->is_file = false;
+    }
 }
 
 /**
@@ -25,6 +32,10 @@ HexCode::HexCode(std::string user_data){
     @returns Encrypted ciphertext.
 */
 std::string HexCode::encrypt(){
+    if(is_file){
+        FileIO file(file_path);
+        data = file.read();
+    }
     std::string result = "";
     for(int index = 0; index < data.length(); index++){
         std::ostringstream hexadecimal;
@@ -35,6 +46,10 @@ std::string HexCode::encrypt(){
         }
     }
     data = result;
+    if(is_file){
+        FileIO file(file_path);
+        return (file.write(data) == true ? "0" : "1");
+    }
     return data;
 }
 
@@ -43,6 +58,10 @@ std::string HexCode::encrypt(){
     @returns Decrypted plaintext.
 */
 std::string HexCode::decrypt(){
+    if(is_file){
+        FileIO file(file_path);
+        data = file.read();
+    }
     std::vector<std::string> chars;
     std::string current = "", result = "";
     for(int index = 0; index < data.length(); index++){
@@ -64,5 +83,9 @@ std::string HexCode::decrypt(){
         result += (char)std::stoi(decimal.str());
     }
     data = result;
+    if(is_file){
+        FileIO file(file_path);
+        return (file.write(data) == true ? "0" : "1");
+    }
     return data;
 }

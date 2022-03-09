@@ -7,6 +7,7 @@
 */
 
 #include <string>
+#include "fileio.hpp"
 #ifndef CAESAR_HPP
 #define CAESAR_HPP
 
@@ -15,10 +16,11 @@
 */
 class CaesarCipher{
 private:
-    std::string data;
+    std::string data, file_path;
     unsigned int offset;
+    bool is_file;
 public:
-    CaesarCipher(std::string user_data, unsigned int crypt_key);
+    CaesarCipher(std::string data, unsigned int key, bool is_file=false);
     std::string encrypt();
     std::string decrypt();
 };

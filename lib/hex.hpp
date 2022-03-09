@@ -7,6 +7,7 @@
 */
 
 #include <string>
+#include "fileio.hpp"
 #ifndef HEX_HPP
 #define HEX_HPP
 
@@ -15,9 +16,10 @@
 */
 class HexCode{
 private:
-    std::string data;
+    std::string data, file_path;
+    bool is_file;
 public:
-    HexCode(std::string user_data);
+    HexCode(std::string data, bool is_file=false);
     std::string encrypt();
     std::string decrypt();
 };

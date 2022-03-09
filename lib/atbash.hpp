@@ -30,7 +30,7 @@ private:
         }
     }
 public:
-    AtbashCipher(std::string user_data, bool is_file = false);
+    AtbashCipher(std::string user_data, bool is_file=false);
     std::string encrypt();
     std::string decrypt();
 };

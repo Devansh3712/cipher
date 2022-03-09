@@ -19,7 +19,7 @@ private:
     std::string data, file_path;
     bool is_file;
 public:
-    ASCIICode(std::string data, bool is_file = false);
+    ASCIICode(std::string data, bool is_file=false);
     std::string encrypt();
     std::string decrypt();
 };

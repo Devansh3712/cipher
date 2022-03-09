@@ -8,6 +8,7 @@
 
 #include <map>
 #include <string>
+#include "fileio.hpp"
 #ifndef MORSE_HPP
 #define MORSE_HPP
 
@@ -16,7 +17,8 @@
 */
 class MorseCode{
 private:
-    std::string data;
+    std::string data, file_path;
+    bool is_file;
     std::map<char, std::string> dict = {
         {'a', ".-"}, {'b', "-..."}, {'c', "-.-."},
         {'d', "-.."}, {'e', "."}, {'f', "..-."},
@@ -33,7 +35,7 @@ private:
         {'-', "-....-"}, {'.', ".-.-.-"}
     };
 public:
-    MorseCode(std::string user_data);
+    MorseCode(std::string data, bool is_file=false);
     std::string encrypt();
     std::string decrypt();
 };

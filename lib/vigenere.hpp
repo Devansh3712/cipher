@@ -7,6 +7,7 @@
 */
 
 #include <string>
+#include "fileio.hpp"
 #ifndef VIGENERE_HPP
 #define VIGENERE_HPP
 
@@ -15,23 +16,23 @@
 */
 class VigenereCipher{
 private:
-    std::string data;
-    std::string key;
-    std::string extend_key(std::string crypt_key){
-        if(crypt_key.length() >= data.length()){
-            return crypt_key;
+    std::string data, key, file_path;
+    bool is_file;
+    std::string extend_key(std::string key){
+        if(key.length() >= data.length()){
+            return key;
         }
-        int required_length = data.length() - crypt_key.length();
-        int initial_key_length = crypt_key.length();
+        int required_length = data.length() - key.length();
+        int initial_key_length = key.length();
         while(required_length > initial_key_length){
-            crypt_key += crypt_key;
+            key += key;
             required_length -= initial_key_length;
         }
-        crypt_key += crypt_key.substr(0, required_length);
-        return crypt_key;
+        key += key.substr(0, required_length);
+        return key;
     }
 public:
-    VigenereCipher(std::string user_data, std::string crypt_key);
+    VigenereCipher(std::string data, std::string key, bool is_file=false);
     std::string encrypt();
     std::string decrypt();
 };
