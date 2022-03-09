@@ -16,8 +16,14 @@
     Constructor for the Atbash cipher class.
     @param user_data Data to encrypt/decrypt.
 */
-AtbashCipher::AtbashCipher(std::string user_data = ""){
-    data = user_data;
+AtbashCipher::AtbashCipher(std::string data, bool is_file){
+    if(is_file){
+        file_path = data;
+        this->is_file = true;
+    }else{
+        this->data = data;
+        this->is_file = false;
+    }
     create_dict();
 }
 
@@ -26,6 +32,10 @@ AtbashCipher::AtbashCipher(std::string user_data = ""){
     @returns Encrypted ciphertext.
 */
 std::string AtbashCipher::encrypt(){
+    if(is_file){
+        FileIO file(file_path);
+        data = file.read();
+    }
     for(int index = 0; index < data.length(); index++){
         if(data[index] >= 'A' && data[index] <= 'Z'){
             data[index] = dict[data[index]];
@@ -33,18 +43,11 @@ std::string AtbashCipher::encrypt(){
             data[index] = std::tolower(dict[std::toupper(data[index])]);
         }
     }
+    if(is_file){
+        FileIO file(file_path);
+        return (file.write(data) == true ? "0" : "1");
+    }
     return data;
-}
-
-/**
-    Encrypt the plaintext from a text file.
-    @returns True if ciphertext is created else false.
-*/
-bool AtbashCipher::encrypt_file(std::string file_path){
-    FileIO file(file_path);
-    data = file.read();
-    data = encrypt();
-    return file.write(data);
 }
 
 /**
@@ -52,6 +55,10 @@ bool AtbashCipher::encrypt_file(std::string file_path){
     @returns Decrypted plaintext.
 */
 std::string AtbashCipher::decrypt(){
+    if(is_file){
+        FileIO file(file_path);
+        data = file.read();
+    }
     for(int index = 0; index < data.length(); index++){
         if(data[index] >= 'A' && data[index] <= 'Z'){
             data[index] = dict[data[index]];
@@ -59,16 +66,9 @@ std::string AtbashCipher::decrypt(){
             data[index] = std::tolower(dict[std::toupper(data[index])]);
         }
     }
+    if(is_file){
+        FileIO file(file_path);
+        return (file.write(data) == true ? "0" : "1");
+    }
     return data;
-}
-
-/**
-    Decrypt the ciphertext from a text file.
-    @returns True if plaintext is created else false.
-*/
-bool AtbashCipher::decrypt_file(std::string file_path){
-    FileIO file(file_path);
-    data = file.read();
-    data = decrypt();
-    return file.write(data);
 }

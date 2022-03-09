@@ -17,8 +17,14 @@
     Constructor for the BinaryCode class.
     @param user_data Data to encrypt/decrypt.
 */
-BinaryCode::BinaryCode(std::string user_data = ""){
-    data = user_data;
+BinaryCode::BinaryCode(std::string data, bool is_file){
+    if(is_file){
+        file_path = data;
+        this->is_file = true;
+    }else{
+        this->data = data;
+        this->is_file = false;
+    }
 }
 
 /**
@@ -26,6 +32,10 @@ BinaryCode::BinaryCode(std::string user_data = ""){
     @returns Encrypted ciphertext.
 */
 std::string BinaryCode::encrypt(){
+    if(is_file){
+        FileIO file(file_path);
+        data = file.read();
+    }
     std::string result = "";
     for(int index = 0; index < data.length(); index++){
         std::string binary = std::bitset<8>((int)data[index]).to_string();
@@ -35,18 +45,11 @@ std::string BinaryCode::encrypt(){
         }
     }
     data = result;
+    if(is_file){
+        FileIO file(file_path);
+        return (file.write(data) == true ? "0" : "1");
+    }
     return data;
-}
-
-/**
-    Encrypt the plaintext from a text file.
-    @returns True if ciphertext is created else false.
-*/
-bool BinaryCode::encrypt_file(std::string file_path){
-    FileIO file(file_path);
-    data = file.read();
-    data = encrypt();
-    return file.write(data);
 }
 
 /**
@@ -54,6 +57,10 @@ bool BinaryCode::encrypt_file(std::string file_path){
     @returns Decrypted plaintext.
 */
 std::string BinaryCode::decrypt(){
+    if(is_file){
+        FileIO file(file_path);
+        data = file.read();
+    }
     std::vector<std::string> chars;
     std::string current = "", result = "";
     for(int index = 0; index < data.length(); index++){
@@ -72,16 +79,9 @@ std::string BinaryCode::decrypt(){
         result += (char)decimal;
     }
     data = result;
+    if(is_file){
+        FileIO file(file_path);
+        return (file.write(data) == true ? "0" : "1");
+    }
     return data;
-}
-
-/**
-    Decrypt the ciphertext from a text file.
-    @returns True if plaintext is created else false.
-*/
-bool BinaryCode::decrypt_file(std::string file_path){
-    FileIO file(file_path);
-    data = file.read();
-    data = decrypt();
-    return file.write(data);
 }

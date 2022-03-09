@@ -16,14 +16,12 @@
 */
 class BinaryCode{
 private:
-    std::string data;
-    friend class FileIO;
+    std::string data, file_path;
+    bool is_file;
 public:
-    BinaryCode(std::string user_data);
+    BinaryCode(std::string user_data, bool is_file = false);
     std::string encrypt();
     std::string decrypt();
-    bool encrypt_file(std::string file_path);
-    bool decrypt_file(std::string file_path);
 };
 
 #endif

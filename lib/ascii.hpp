@@ -16,14 +16,12 @@
 */
 class ASCIICode{
 private:
-    std::string data;
-    friend class FileIO;
+    std::string data, file_path;
+    bool is_file;
 public:
-    ASCIICode(std::string user_data);
+    ASCIICode(std::string data, bool is_file = false);
     std::string encrypt();
     std::string decrypt();
-    bool encrypt_file(std::string file_path);
-    bool decrypt_file(std::string file_path);
 };
 
 #endif

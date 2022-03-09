@@ -10,14 +10,19 @@
 #include <string>
 #include <vector>
 #include "ascii.hpp"
-#include "fileio.hpp"
 
 /**
     Constructor for the ASCIICode class.
     @param user_data Data to encrypt/decrypt.
 */
-ASCIICode::ASCIICode(std::string user_data = ""){
-    data = user_data;
+ASCIICode::ASCIICode(std::string data, bool is_file){
+    if(is_file){
+        file_path = data;
+        this->is_file = true;
+    }else{
+        this->data = data;
+        this->is_file = false;
+    }
 }
 
 /**
@@ -25,6 +30,10 @@ ASCIICode::ASCIICode(std::string user_data = ""){
     @returns Encrypted ciphertext.
 */
 std::string ASCIICode::encrypt(){
+    if(is_file){
+        FileIO file(file_path);
+        data = file.read();
+    }
     std::string result = "";
     for(int index = 0; index < data.length(); index++){
         result += std::to_string((int)data[index]);
@@ -33,18 +42,11 @@ std::string ASCIICode::encrypt(){
         }
     }
     data = result;
+    if(is_file){
+        FileIO file(file_path);
+        return (file.write(data) == true ? "0" : "1");
+    }
     return data;
-}
-
-/**
-    Encrypt the plaintext from a text file.
-    @returns True if ciphertext is created else false.
-*/
-bool ASCIICode::encrypt_file(std::string file_path){
-    FileIO file(file_path);
-    data = file.read();
-    data = encrypt();
-    return file.write(data);
 }
 
 /**
@@ -52,6 +54,10 @@ bool ASCIICode::encrypt_file(std::string file_path){
     @returns Decrypted plaintext.
 */
 std::string ASCIICode::decrypt(){
+    if(is_file){
+        FileIO file(file_path);
+        data = file.read();
+    }
     std::vector<std::string> chars;
     std::string current = "", result = "";
     for(int index = 0; index < data.length(); index++){
@@ -69,16 +75,9 @@ std::string ASCIICode::decrypt(){
         result += (char)std::stoi(item);
     }
     data = result;
+    if(is_file){
+        FileIO file(file_path);
+        return (file.write(data) == true ? "0" : "1");
+    }
     return data;
-}
-
-/**
-    Decrypt the ciphertext from a text file.
-    @returns True if plaintext is created else false.
-*/
-bool ASCIICode::decrypt_file(std::string file_path){
-    FileIO file(file_path);
-    data = file.read();
-    data = decrypt();
-    return file.write(data);
 }
