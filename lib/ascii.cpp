@@ -14,6 +14,7 @@
 /**
     Constructor for the ASCIICode class.
     @param user_data Data to encrypt/decrypt.
+    @param is_file Read/Write from a file. Defaults to false.
 */
 ASCIICode::ASCIICode(std::string data, bool is_file){
     if(is_file){
