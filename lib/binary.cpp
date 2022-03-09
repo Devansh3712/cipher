@@ -10,7 +10,6 @@
 #include <bitset>
 #include <vector>
 #include "binary.hpp"
-#include "fileio.hpp"
 
 /**
     Default constructor for the BinaryCode class.

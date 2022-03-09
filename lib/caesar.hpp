@@ -6,6 +6,7 @@
     @date 01/03/2022
 */
 
+#include <iostream>
 #include <string>
 #include "fileio.hpp"
 #ifndef CAESAR_HPP
@@ -20,7 +21,10 @@ private:
     unsigned int offset;
     bool is_file;
 public:
+    CaesarCipher();
     CaesarCipher(std::string data, unsigned int key, bool is_file=false);
+    friend std::ostream& operator<<(std::ostream &output, CaesarCipher &obj);
+    friend std::istream& operator>>(std::istream &input, CaesarCipher &obj);
     std::string encrypt();
     std::string decrypt();
 };
