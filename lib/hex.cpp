@@ -8,9 +8,15 @@
 */
 
 #include <sstream>
-#include <string>
 #include <vector>
 #include "hex.hpp"
+
+/**
+    Default constructor for the HexCode class.
+*/
+HexCode::HexCode(){
+    is_file = false;
+}
 
 /**
     Constructor for the HexCode class.
@@ -25,6 +31,28 @@ HexCode::HexCode(std::string data, bool is_file){
         this->data = data;
         this->is_file = false;
     }
+}
+
+/**
+    Overload extraction (<<) operator for displaying data.
+    @param output Reference to output stream.
+    @param obj Reference to HexCode object.
+    @returns Reference to output stream.
+*/
+std::ostream& operator<<(std::ostream &output, HexCode &obj){
+    output << obj.data;
+    return output;
+}
+
+/**
+    Overload insertion (>>) operator for taking data from user.
+    @param input Reference to input stream.
+    @param obj Reference to HexCode object.
+    @returns Reference to input stream.
+*/
+std::istream& operator>>(std::istream &input, HexCode &obj){
+    std::getline(input, obj.data);
+    return input;
 }
 
 /**
