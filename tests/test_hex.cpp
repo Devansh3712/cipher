@@ -1,10 +1,16 @@
 #include <cassert>
-#include <string>
 #include "../lib/hex.hpp"
+#include "../lib/fileio.hpp"
 
 int main(){
     std::string str = "test data", result = "74 65 73 74 20 64 61 74 61";
-    HexCode obj(str);
-    assert(obj.encrypt() == result);
-    assert(obj.decrypt() == str);
+    HexCode obj1(str), obj2("./tests/test_file.txt", true);
+    assert(obj1.encrypt() == result);
+    assert(obj1.decrypt() == str);
+    obj2.encrypt();
+    FileIO encrypted("./tests/test_file.txt");
+    assert(encrypted.read() == result);
+    obj2.decrypt();
+    FileIO decrypted("./tests/test_file.txt");
+    assert(decrypted.read() == str);
 }
