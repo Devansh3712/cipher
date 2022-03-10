@@ -8,9 +8,15 @@
 */
 
 #include <cctype>
-#include <string>
 #include <vector>
 #include "morse.hpp"
+
+/**
+    Default constructor for the MorseCode class.
+*/
+MorseCode::MorseCode(){
+    is_file = false;
+}
 
 /**
     Constructor for the MorseCode class.
@@ -25,6 +31,28 @@ MorseCode::MorseCode(std::string data, bool is_file){
         this->data = data;
         this->is_file = false;
     }
+}
+
+/**
+    Overload extraction (<<) operator for displaying data.
+    @param output Reference to output stream.
+    @param obj Reference to MorseCode object.
+    @returns Reference to output stream.
+*/
+std::ostream& operator<<(std::ostream &output, MorseCode &obj){
+    output << obj.data;
+    return output;
+}
+
+/**
+    Overload insertion (>>) operator for taking data from user.
+    @param input Reference to input stream.
+    @param obj Reference to MorseCode object.
+    @returns Reference to input stream.
+*/
+std::istream& operator>>(std::istream &input, MorseCode &obj){
+    std::getline(input, obj.data);
+    return input;
 }
 
 /**

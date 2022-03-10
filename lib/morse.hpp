@@ -6,6 +6,7 @@
     @date 03/03/2022
 */
 
+#include <iostream>
 #include <map>
 #include <string>
 #include "fileio.hpp"
@@ -35,7 +36,10 @@ private:
         {'-', "-....-"}, {'.', ".-.-.-"}
     };
 public:
+    MorseCode();
     MorseCode(std::string data, bool is_file=false);
+    friend std::ostream& operator<<(std::ostream &output, MorseCode &obj);
+    friend std::istream& operator>>(std::istream &input, MorseCode &obj);
     std::string encrypt();
     std::string decrypt();
 };
