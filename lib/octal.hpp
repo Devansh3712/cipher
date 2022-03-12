@@ -6,6 +6,7 @@
     @date 01/03/2022
 */
 
+#include <iostream>
 #include <string>
 #include "fileio.hpp"
 #ifndef OCTAL_HPP
@@ -19,7 +20,10 @@ private:
     std::string data, file_path;
     bool is_file;
 public:
+    OctalCode();
     OctalCode(std::string data, bool file_path=false);
+    friend std::ostream& operator<<(std::ostream &output, OctalCode &obj);
+    friend std::istream& operator>>(std::istream &input, OctalCode &obj);
     std::string encrypt();
     std::string decrypt();
 };
