@@ -8,9 +8,21 @@
     @date 05/03/2022
 */
 
-#include <string>
 #include "vigenere.hpp"
 
+/**
+    Default constructor for the VigenereCipher class.
+*/
+VigenereCipher::VigenereCipher(){
+    is_file = false;
+}
+
+/**
+    Parameterized constructor for the Vigenere cipher class.
+    @param data Data to encrypt/decrypt.
+    @param key Number of positions to shift.
+    @param is_file Read/Write from a file. Defaults to false.
+*/
 VigenereCipher::VigenereCipher(std::string data, std::string key, bool is_file){
     if(is_file){
         file_path = data;
@@ -21,6 +33,29 @@ VigenereCipher::VigenereCipher(std::string data, std::string key, bool is_file){
     }
     key = extend_key(key);
     this->key = key;
+}
+
+/**
+    Overload extraction (<<) operator for displaying data.
+    @param output Reference to output stream.
+    @param obj Reference to VigenereCipher object.
+    @returns Reference to output stream.
+*/
+std::ostream& operator<<(std::ostream &output, VigenereCipher &obj){
+    output << obj.data;
+    return output;
+}
+
+/**
+    Overload insertion (>>) operator for taking data from user.
+    @param input Reference to input stream.
+    @param obj Reference to VigenereCipher object.
+    @returns Reference to input stream.
+*/
+std::istream& operator>>(std::istream &input, VigenereCipher &obj){
+    std::getline(input, obj.data);
+    input >> obj.key;
+    return input;
 }
 
 /**

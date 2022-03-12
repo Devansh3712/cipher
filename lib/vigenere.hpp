@@ -6,6 +6,7 @@
     @date 01/03/2022
 */
 
+#include <iostream>
 #include <string>
 #include "fileio.hpp"
 #ifndef VIGENERE_HPP
@@ -32,7 +33,10 @@ private:
         return key;
     }
 public:
+    VigenereCipher();
     VigenereCipher(std::string data, std::string key, bool is_file=false);
+    friend std::ostream& operator<<(std::ostream &output, VigenereCipher &obj);
+    friend std::istream& operator>>(std::istream &input, VigenereCipher &obj);
     std::string encrypt();
     std::string decrypt();
 };
