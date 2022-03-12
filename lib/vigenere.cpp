@@ -31,7 +31,6 @@ VigenereCipher::VigenereCipher(std::string data, std::string key, bool is_file){
         this->data = data;
         this->is_file = false;
     }
-    key = extend_key(key);
     this->key = key;
 }
 
@@ -59,6 +58,26 @@ std::istream& operator>>(std::istream &input, VigenereCipher &obj){
 }
 
 /**
+   Extend key to length of the data to be encrypted/decrypted.
+   @param length Length of data.
+   @param key Key to extend.
+   @returns Extended key.
+*/
+std::string VigenereCipher::extend_key(int length, std::string key){
+    if(key.length() >= length){
+        return key;
+    }
+    int required_length = length - key.length();
+    int initial_key_length = key.length();
+    while(required_length > initial_key_length){
+        key += key;
+        required_length -= initial_key_length;
+    }
+    key += key.substr(0, required_length);
+    return key;
+}
+
+/**
     Encrypt the plaintext using the initialized key.
     @returns Encrypted ciphertext.
 */
@@ -67,6 +86,7 @@ std::string VigenereCipher::encrypt(){
         FileIO file(file_path);
         data = file.read();
     }
+    key = extend_key(data.length(), key);
     for(int index = 0; index < data.length(); index++){
         if(data[index] >= 'A' && data[index] <= 'Z'){
             data[index] = (data[index] - 'A' + (key[index] - 'A')) % 26 + 'A';
@@ -90,6 +110,7 @@ std::string VigenereCipher::decrypt(){
         FileIO file(file_path);
         data = file.read();
     }
+    key = extend_key(data.length(), key);
     for(int index = 0; index < data.length(); index++){
         if(data[index] >= 'A' && data[index] <= 'Z'){
             data[index] = (data[index] - 'A' - (key[index] - 'A') + 26) % 26 + 'A';
