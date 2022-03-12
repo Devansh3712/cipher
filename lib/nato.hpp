@@ -6,6 +6,7 @@
     @date 04/03/2022
 */
 
+#include <iostream>
 #include <map>
 #include <string>
 #include "fileio.hpp"
@@ -35,7 +36,10 @@ private:
         {'-', "dash"}, {'.', "stop"}
     };
 public:
+    NATOPhoneticCode();
     NATOPhoneticCode(std::string data, bool is_file=false);
+    friend std::ostream& operator<<(std::ostream &output, NATOPhoneticCode &obj);
+    friend std::istream& operator>>(std::istream &input, NATOPhoneticCode &obj);
     std::string encrypt();
     std::string decrypt();
 };
