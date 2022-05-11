@@ -20,4 +20,11 @@
 #ifndef CIPHER_H
 #define CIPHER_H
 
+// Parent class cipher.
+class Cipher {
+public:
+    virtual std::string encrypt() = 0;
+    virtual std::string decrypt() = 0;
+}
+
 #endif
