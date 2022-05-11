@@ -9,6 +9,7 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include "base.hpp"
 #include "fileio.hpp"
 #ifndef MORSE_HPP
 #define MORSE_HPP
@@ -16,7 +17,7 @@
 /**
     Implementation of Morse code cryptography technique.
 */
-class MorseCode{
+class MorseCode: public Cipher {
 private:
     std::string data, file_path;
     bool is_file;

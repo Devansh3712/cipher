@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include "base.hpp"
 #include "fileio.hpp"
 #ifndef BINARY_HPP
 #define BINARY_HPP
@@ -15,7 +16,7 @@
 /**
     Implementation of Binary code cryptography technique.
 */
-class BinaryCode{
+class BinaryCode : public Cipher {
 private:
     std::string data, file_path;
     bool is_file;

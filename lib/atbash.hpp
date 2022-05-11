@@ -9,6 +9,7 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include "base.hpp"
 #include "fileio.hpp"
 #ifndef ATBASH_HPP
 #define ATBASH_HPP
@@ -16,12 +17,12 @@
 /**
     Implementation of Atbash cipher cryptography technique.
 */
-class AtbashCipher{
+class AtbashCipher: public Cipher {
 private:
     std::string data, file_path;
     bool is_file;
     std::map<char, char> dict;
-    void create_dict(){
+    void create_dict() {
         int left = 65, right = 90;
         while(true){
             if(left > 90 && right < 65){

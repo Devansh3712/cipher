@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include "base.hpp"
 #include "fileio.hpp"
 #ifndef CAESAR_HPP
 #define CAESAR_HPP
@@ -15,7 +16,7 @@
 /**
     Implementation of Caesar cipher cryptography technique.
 */
-class CaesarCipher{
+class CaesarCipher: public Cipher {
 private:
     std::string data, file_path;
     unsigned int offset;

@@ -1,6 +1,6 @@
 /**
     C++ Header file for including all cipher library's header files.
-    @file cipher.h
+    @file cipher.hpp
     @author Devansh Singh
     @brief Contains all header files used by cipher library.
     @date 28/02/2022
@@ -17,14 +17,7 @@
 #include "nato.hpp"
 #include "octal.hpp"
 #include "vigenere.hpp"
-#ifndef CIPHER_H
-#define CIPHER_H
-
-// Parent class cipher.
-class Cipher {
-public:
-    virtual std::string encrypt() = 0;
-    virtual std::string decrypt() = 0;
-}
+#ifndef CIPHER_HPP
+#define CIPHER_HPP
 
 #endif

@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include "base.hpp"
 #include "fileio.hpp"
 #ifndef VIGENERE_HPP
 #define VIGENERE_HPP
@@ -15,7 +16,7 @@
 /**
     Implementation of Vigenere cipher cryptography technique.
 */
-class VigenereCipher{
+class VigenereCipher: public Cipher {
 private:
     std::string data, key, file_path;
     bool is_file;

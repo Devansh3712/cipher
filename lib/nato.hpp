@@ -9,6 +9,7 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include "base.hpp"
 #include "fileio.hpp"
 #ifndef NATO_HPP
 #define NATO_HPP
@@ -16,7 +17,7 @@
 /**
     Implementation of NATO phonetic code cryptography technique.
 */
-class NATOPhoneticCode{
+class NATOPhoneticCode: public Cipher {
 private:
     std::string data, file_path;
     bool is_file;

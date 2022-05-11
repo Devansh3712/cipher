@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include "base.hpp"
 #include "fileio.hpp"
 #ifndef HEX_HPP
 #define HEX_HPP
@@ -15,7 +16,7 @@
 /**
     Implementation of Hex code cryptography technique.
 */
-class HexCode{
+class HexCode: public Cipher {
 private:
     std::string data, file_path;
     bool is_file;

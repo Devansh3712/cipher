@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include "base.hpp"
 #include "fileio.hpp"
 #ifndef OCTAL_HPP
 #define OCTAL_HPP
@@ -15,7 +16,7 @@
 /**
     Implementation of Octal code cryptography technique.
 */
-class OctalCode{
+class OctalCode: public Cipher {
 private:
     std::string data, file_path;
     bool is_file;

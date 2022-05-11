@@ -4,6 +4,7 @@ FILE = lib/fileio.cpp
 all: cipher
 test: test_ascii test_atbash test_binary test_caesar test_hex test_morse test_nato test_octal test_vigenere
 
+.PHONY: cipher
 cipher: main.cpp $(DEPS)
 	g++ -o cipher main.cpp $(DEPS)
 	./cipher.exe

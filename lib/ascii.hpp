@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include "base.hpp"
 #include "fileio.hpp"
 #ifndef ASCII_HPP
 #define ASCII_HPP
@@ -15,7 +16,7 @@
 /**
     Implementation of ASCII code cryptography technique.
 */
-class ASCIICode{
+class ASCIICode: public Cipher {
 private:
     std::string data, file_path;
     bool is_file;

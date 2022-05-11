@@ -1,6 +1,6 @@
 /**
     ASCII code C++ implementation.
-    @file binary.cpp
+    @file ascii.cpp
     @author Devansh Singh
     @brief ASCII code is a cipher where the characters of the plaintext are
     converted to their ASCII equivalent.
