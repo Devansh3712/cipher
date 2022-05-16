@@ -12,7 +12,7 @@
 #include "fileio.hpp"
 
 /**
-    Constructor for the FileIO class.
+    Parameterized constructor for the FileIO class.
     @param path_to_file Path of the file to read/write.
 */
 FileIO::FileIO(std::string path_to_file) {
@@ -24,12 +24,16 @@ FileIO::FileIO(std::string path_to_file) {
     @returns File content.
 */
 std::string FileIO::read() {
-    std::ifstream infile;
-    infile.open(file_path);
-    std::stringstream stream;
-    stream << infile.rdbuf();
-    infile.close();
-    return stream.str();
+    try {
+        std::ifstream infile;
+        infile.open(file_path);
+        std::stringstream stream;
+        stream << infile.rdbuf();
+        infile.close();
+        return stream.str();
+    }catch(...) {
+        return nullptr;
+    }
 }
 
 /**

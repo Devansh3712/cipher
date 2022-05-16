@@ -20,8 +20,6 @@
 */
 class NATOPhoneticCode: public Cipher {
 private:
-    std::string data, file_path;
-    bool is_file;
     std::map<char, std::string> dict = {
         {'a', "alpha"}, {'b', "bravo"}, {'c', "charlie"},
         {'d', "delta"}, {'e', "echo"}, {'f', "foxtrot"},

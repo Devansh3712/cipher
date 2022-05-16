@@ -20,7 +20,7 @@ OctalCode::OctalCode() {
 }
 
 /**
-    Constructor for the OctalCode class.
+    Parameterized constructor for the OctalCode class.
     @param user_data Data to encrypt/decrypt.
     @param is_file Read/Write from a file. Defaults to false.
 */

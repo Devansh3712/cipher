@@ -18,9 +18,6 @@
     Implementation of Hex code cryptography technique.
 */
 class HexCode: public Cipher {
-private:
-    std::string data, file_path;
-    bool is_file;
 public:
     HexCode();
     HexCode(std::string data, bool is_file=false);

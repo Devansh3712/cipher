@@ -19,8 +19,7 @@
 */
 class VigenereCipher: public Cipher {
 private:
-    std::string data, key, file_path;
-    bool is_file;
+    std::string key;
 public:
     VigenereCipher();
     VigenereCipher(std::string data, std::string key, bool is_file=false);

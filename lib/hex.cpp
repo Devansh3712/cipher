@@ -20,7 +20,7 @@ HexCode::HexCode() {
 }
 
 /**
-    Constructor for the HexCode class.
+    Parameterized constructor for the HexCode class.
     @param data Data to encrypt/decrypt.
     @param is_file Read/Write from a file. Defaults to false.
 */

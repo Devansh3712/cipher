@@ -20,7 +20,7 @@ NATOPhoneticCode::NATOPhoneticCode() {
 }
 
 /**
-    Constructor for the NATOPhoneticCode class.
+    Parameterized constructor for the NATOPhoneticCode class.
     @param data Data to encrypt/decrypt.
     @param is_file Read/Write from a file. Defaults to false.
 */

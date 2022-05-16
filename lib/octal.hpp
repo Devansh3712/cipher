@@ -18,9 +18,6 @@
     Implementation of Octal code cryptography technique.
 */
 class OctalCode: public Cipher {
-private:
-    std::string data, file_path;
-    bool is_file;
 public:
     OctalCode();
     OctalCode(std::string data, bool file_path=false);

@@ -18,9 +18,6 @@
     Implementation of ASCII code cryptography technique.
 */
 class ASCIICode: public Cipher {
-private:
-    std::string data, file_path;
-    bool is_file;
 public:
     ASCIICode();
     ASCIICode(std::string data, bool is_file=false);

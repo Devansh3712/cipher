@@ -15,6 +15,9 @@
     Implementation of Cipher base class.
 */
 class Cipher {
+protected:
+    std::string data, file_path;
+    bool is_file;
 public:
     virtual std::string encrypt() = 0;
     virtual std::string decrypt() = 0;

@@ -43,7 +43,7 @@ R"(6. Morse Code)" "\n"
 R"(7. NATO Phonetic Code)" "\n"
 R"(8. Octal Code)" "\n"
 R"(9. Vigenere Cipher)" "\n"
-R"(10. Back to main menu)";
+R"(10. Main Menu)";
 
 /**
     Encrypt/decrypt the data according to user input.
@@ -67,15 +67,23 @@ void crypt(Cipher *obj) {
     @param obj Reference of Cipher base class.
 */
 void cryptFile(Cipher *obj) {
-    std::string option;
+    std::string option, result;
     std::cout << "(file) cipher> Encrypt/Decrypt: ";
     std::cin >> option;
     if(option == "encrypt" || option == "Encrypt" || option == "e" || option == "E"){
-        obj->encrypt();
-        std::cout << "(file) cipher> [+] File encrypted." << std::endl;
+        result = obj->encrypt();
+        if(result == "1") {
+            std::cout << "(file) cipher> [!] Unable to encrypt file." << std::endl;
+        }else {
+            std::cout << "(file) cipher> [+] File encrypted." << std::endl;
+        }
     }else if(option == "decrypt" || option == "Decrypt" || option == "d" || option == "D"){
-        obj->decrypt();
-        std::cout << "(file) cipher> [+] File decrypted." << std::endl;
+        result = obj->decrypt();
+        if(result == "1") {
+            std::cout << "(file) cipher> [!] Unable to decrypt file." << std::endl;
+        }else {
+            std::cout << "(file) cipher> [+] File decrypted." << std::endl;
+        }
     }else{
         std::cout << "(file) cipher> [!] Choose a correct option." << std::endl;
     }

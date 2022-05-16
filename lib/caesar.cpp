@@ -18,7 +18,7 @@ CaesarCipher::CaesarCipher() {
 }
 
 /**
-    Constructor for the Caesar cipher class.
+    Parameterized constructor for the Caesar cipher class.
     @param data Data to encrypt/decrypt.
     @param key Number of positions to shift.
     @param is_file Read/Write from a file. Defaults to false.

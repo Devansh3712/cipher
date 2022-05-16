@@ -20,7 +20,7 @@ MorseCode::MorseCode() {
 }
 
 /**
-    Constructor for the MorseCode class.
+    Parameterized constructor for the MorseCode class.
     @param data Data to encrypt/decrypt.
     @param is_file Read/Write from a file. Defaults to false.
 */

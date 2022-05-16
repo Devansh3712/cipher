@@ -19,9 +19,7 @@
 */
 class CaesarCipher: public Cipher {
 private:
-    std::string data, file_path;
     unsigned int offset;
-    bool is_file;
 public:
     CaesarCipher();
     CaesarCipher(std::string data, unsigned int key, bool is_file=false);

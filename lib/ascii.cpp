@@ -91,7 +91,7 @@ std::string ASCIICode::decrypt() {
     std::vector<std::string> chars;
     std::string current = "", result = "";
     for(int index = 0; index < data.length(); index++) {
-        if(data[index] != ' '){
+        if(data[index] != ' ') {
             current += data[index];
         }else {
             chars.push_back(current);

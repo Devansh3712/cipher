@@ -20,8 +20,6 @@
 */
 class AtbashCipher: public Cipher {
 private:
-    std::string data, file_path;
-    bool is_file;
     std::map<char, char> dict;
     void create_dict() {
         int left = 65, right = 90;

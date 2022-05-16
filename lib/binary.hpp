@@ -18,9 +18,6 @@
     Implementation of Binary code cryptography technique.
 */
 class BinaryCode : public Cipher {
-private:
-    std::string data, file_path;
-    bool is_file;
 public:
     BinaryCode();
     BinaryCode(std::string user_data, bool is_file=false);
