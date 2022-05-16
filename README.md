@@ -4,9 +4,7 @@
   <img src="https://github.com/Devansh3712/cipher/actions/workflows/cpp.yml/badge.svg">
 </p>
 
-<h3><i><center>Library and CLI for cryptography techniques.</center></i></h3>
-
----
+<p align = "center"><i> Library and CLI for cryptography techniques.</i></p>
 
 ## Running the CLI
 A command line interface is available for `cipher`, through which data or files can be encrypted/decrypted through the command line or terminal. Following methods can be used to create an executable.
