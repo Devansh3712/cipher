@@ -2,6 +2,7 @@
     ASCII code C++ implementation.
     @file ascii.cpp
     @author Devansh Singh
+            Chirag Tyagi
     @brief ASCII code is a cipher where the characters of the plaintext are
     converted to their ASCII equivalent.
     @date 01/03/2022
@@ -13,7 +14,7 @@
 /**
     Default constructor for the ASCIICode class.
 */
-ASCIICode::ASCIICode(){
+ASCIICode::ASCIICode() {
     is_file = false;
 }
 
@@ -22,11 +23,11 @@ ASCIICode::ASCIICode(){
     @param data Data to encrypt/decrypt.
     @param is_file Read/Write from a file. Defaults to false.
 */
-ASCIICode::ASCIICode(std::string data, bool is_file){
-    if(is_file){
+ASCIICode::ASCIICode(std::string data, bool is_file) {
+    if(is_file) {
         file_path = data;
         this->is_file = true;
-    }else{
+    }else {
         this->data = data;
         this->is_file = false;
     }
@@ -38,7 +39,7 @@ ASCIICode::ASCIICode(std::string data, bool is_file){
     @param obj Reference to ASCIICode object.
     @returns Reference to output stream.
 */
-std::ostream& operator<<(std::ostream &output, ASCIICode &obj){
+std::ostream& operator<<(std::ostream &output, ASCIICode &obj) {
     output << obj.data;
     return output;
 }
@@ -49,7 +50,7 @@ std::ostream& operator<<(std::ostream &output, ASCIICode &obj){
     @param obj Reference to ASCIICode object.
     @returns Reference to input stream.
 */
-std::istream& operator>>(std::istream &input, ASCIICode &obj){
+std::istream& operator>>(std::istream &input, ASCIICode &obj) {
     std::getline(input, obj.data);
     return input;
 }
@@ -58,20 +59,20 @@ std::istream& operator>>(std::istream &input, ASCIICode &obj){
     Encrypt the plaintext.
     @returns Encrypted ciphertext.
 */
-std::string ASCIICode::encrypt(){
-    if(is_file){
+std::string ASCIICode::encrypt() {
+    if(is_file) {
         FileIO file(file_path);
         data = file.read();
     }
     std::string result = "";
-    for(int index = 0; index < data.length(); index++){
+    for(int index = 0; index < data.length(); index++) {
         result += std::to_string((int)data[index]);
-        if(index != data.length() - 1){
+        if(index != data.length() - 1) {
             result += std::string(" ");
         }
     }
     data = result;
-    if(is_file){
+    if(is_file) {
         FileIO file(file_path);
         return (file.write(data) == true ? "0" : "1");
     }
@@ -82,29 +83,29 @@ std::string ASCIICode::encrypt(){
     Decrypt the ciphertext.
     @returns Decrypted plaintext.
 */
-std::string ASCIICode::decrypt(){
-    if(is_file){
+std::string ASCIICode::decrypt() {
+    if(is_file) {
         FileIO file(file_path);
         data = file.read();
     }
     std::vector<std::string> chars;
     std::string current = "", result = "";
-    for(int index = 0; index < data.length(); index++){
+    for(int index = 0; index < data.length(); index++) {
         if(data[index] != ' '){
             current += data[index];
-        }else{
+        }else {
             chars.push_back(current);
             current = "";
         }
     }
-    if(current.length()){
+    if(current.length()) {
         chars.push_back(current);
     }
-    for(auto item: chars){
+    for(auto item: chars) {
         result += (char)std::stoi(item);
     }
     data = result;
-    if(is_file){
+    if(is_file) {
         FileIO file(file_path);
         return (file.write(data) == true ? "0" : "1");
     }

@@ -2,6 +2,7 @@
     C++ header file for "octal.cpp".
     @file octal.hpp
     @author Devansh Singh
+            Chirag Tyagi
     @brief Header file for initializing OctalCode class.
     @date 01/03/2022
 */

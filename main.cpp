@@ -2,6 +2,7 @@
     Cipher program main file.
     @file main.cpp
     @author Devansh Singh
+            Chirag Tyagi
     @brief The main file for compiling and running cipher program.
     @date 28/02/2022
 */
@@ -41,9 +42,45 @@ R"(5. Hex Code)" "\n"
 R"(6. Morse Code)" "\n"
 R"(7. NATO Phonetic Code)" "\n"
 R"(8. Octal Code)" "\n"
-R"(9. Vigenere Cipher)";
+R"(9. Vigenere Cipher)" "\n"
+R"(10. Back to main menu)";
 
-// Controls operation of the program
+/**
+    Encrypt/decrypt the data according to user input.
+    @param obj Reference of Cipher base class.
+*/
+void crypt(Cipher *obj) {
+    std::string option;
+    std::cout << "cipher> Encrypt/Decrypt: ";
+    std::cin >> option;
+    if(option == "encrypt" || option == "Encrypt" || option == "e" || option == "E"){
+        std::cout << "cipher> Encrypted data: " << obj->encrypt() << std::endl;
+    }else if(option == "decrypt" || option == "Decrypt" || option == "d" || option == "D"){
+        std::cout << "cipher> Decrypted data: " << obj->decrypt() << std::endl;
+    }else{
+        std::cout << "cipher> [!] Choose a correct option." << std::endl;
+    }
+}
+
+/**
+    Encrypt/decrypt a file according to user input.
+    @param obj Reference of Cipher base class.
+*/
+void cryptFile(Cipher *obj) {
+    std::string option;
+    std::cout << "(file) cipher> Encrypt/Decrypt: ";
+    std::cin >> option;
+    if(option == "encrypt" || option == "Encrypt" || option == "e" || option == "E"){
+        obj->encrypt();
+        std::cout << "(file) cipher> [+] File encrypted." << std::endl;
+    }else if(option == "decrypt" || option == "Decrypt" || option == "d" || option == "D"){
+        obj->decrypt();
+        std::cout << "(file) cipher> [+] File decrypted." << std::endl;
+    }else{
+        std::cout << "(file) cipher> [!] Choose a correct option." << std::endl;
+    }
+}
+
 int main(){
     std::cout << CIPHER_ART << std::endl;
     std::cout << MENU << std::endl;
@@ -54,327 +91,174 @@ int main(){
         std::cin.ignore();
         switch(option){
             case 1: {
-                std::string data, crypt_option;
+                std::string data;
                 std::cout << "cipher> Enter data: ";
                 getline(std::cin, data);
                 ASCIICode obj(data);
-                std::cout << "cipher> Encrypt/Decrypt: ";
-                std::cin >> crypt_option;
-                if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                    std::cout << "cipher> Encrypted data: " << obj.encrypt() << std::endl;
-                }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                    std::cout << "cipher> Decrypted data: " << obj.decrypt() << std::endl;
-                }else{
-                    std::cout << "cipher> [!] Choose a correct option." << std::endl;
-                }
+                crypt(&obj);
                 break;
             }
             case 2: {
-                std::string data, crypt_option;
+                std::string data;
                 std::cout << "cipher> Enter data: ";
                 getline(std::cin, data);
                 AtbashCipher obj(data);
-                std::cout << "cipher> Encrypt/Decrypt: ";
-                std::cin >> crypt_option;
-                if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                    std::cout << "cipher> Encrypted data: " << obj.encrypt() << std::endl;
-                }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                    std::cout << "cipher> Decrypted data: " << obj.decrypt() << std::endl;
-                }else{
-                    std::cout << "cipher> [!] Choose a correct option." << std::endl;
-                }
+                crypt(&obj);
                 break;
             }
             case 3: {
-                std::string data, crypt_option;
+                std::string data;
                 std::cout << "cipher> Enter data: ";
                 getline(std::cin, data);
                 BinaryCode obj(data);
-                std::cout << "cipher> Encrypt/Decrypt: ";
-                std::cin >> crypt_option;
-                if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                    std::cout << "cipher> Encrypted data: " << obj.encrypt() << std::endl;
-                }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                    std::cout << "cipher> Decrypted data: " << obj.decrypt() << std::endl;
-                }else{
-                    std::cout << "cipher> [!] Choose a correct option." << std::endl;
-                }
+                crypt(&obj);
                 break;
             }
             case 4: {
-                std::string data, crypt_option;
+                std::string data;
                 unsigned int key;
                 std::cout << "cipher> Enter data: ";
                 getline(std::cin, data);
                 std::cout << "cipher> Enter key (offset): ";
                 std::cin >> key;
                 CaesarCipher obj(data, key);
-                std::cout << "cipher> Encrypt/Decrypt: ";
-                std::cin >> crypt_option;
-                if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                    std::cout << "cipher> Encrypted data: " << obj.encrypt() << std::endl;
-                }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                    std::cout << "cipher> Decrypted data: " << obj.decrypt() << std::endl;
-                }else{
-                    std::cout << "cipher> [!] Choose a correct option." << std::endl;
-                }
+                crypt(&obj);
                 break;
             }
             case 5: {
-                std::string data, crypt_option;
+                std::string data;
                 std::cout << "cipher> Enter data: ";
                 getline(std::cin, data);
                 HexCode obj(data);
-                std::cout << "cipher> Encrypt/Decrypt: ";
-                std::cin >> crypt_option;
-                if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                    std::cout << "cipher> Encrypted data: " << obj.encrypt() << std::endl;
-                }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                    std::cout << "cipher> Decrypted data: " << obj.decrypt() << std::endl;
-                }else{
-                    std::cout << "cipher> [!] Choose a correct option." << std::endl;
-                }
+                crypt(&obj);
                 break;
             }
             case 6: {
-                std::string data, crypt_option;
+                std::string data;
                 std::cout << "cipher> Enter data: ";
                 getline(std::cin, data);
                 MorseCode obj(data);
-                std::cout << "cipher> Encrypt/Decrypt: ";
-                std::cin >> crypt_option;
-                if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                    std::cout << "cipher> Encrypted data: " << obj.encrypt() << std::endl;
-                }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                    std::cout << "cipher> Decrypted data: " << obj.decrypt() << std::endl;
-                }else{
-                    std::cout << "cipher> [!] Choose a correct option." << std::endl;
-                }
+                crypt(&obj);
                 break;
             }
             case 7: {
-                std::string data, crypt_option;
+                std::string data;
                 std::cout << "cipher> Enter data: ";
                 getline(std::cin, data);
                 NATOPhoneticCode obj(data);
-                std::cout << "cipher> Encrypt/Decrypt: ";
-                std::cin >> crypt_option;
-                if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                    std::cout << "cipher> Encrypted data: " << obj.encrypt() << std::endl;
-                }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                    std::cout << "cipher> Decrypted data: " << obj.decrypt() << std::endl;
-                }else{
-                    std::cout << "cipher> [!] Choose a correct option." << std::endl;
-                }
+                crypt(&obj);
                 break;
             }
             case 8: {
-                std::string data, crypt_option;
+                std::string data;
                 std::cout << "cipher> Enter data: ";
                 getline(std::cin, data);
                 OctalCode obj(data);
-                std::cout << "cipher> Encrypt/Decrypt: ";
-                std::cin >> crypt_option;
-                if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                    std::cout << "cipher> Encrypted data: " << obj.encrypt() << std::endl;
-                }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                    std::cout << "cipher> Decrypted data: " << obj.decrypt() << std::endl;
-                }else{
-                    std::cout << "cipher> [!] Choose a correct option." << std::endl;
-                }
+                crypt(&obj);
                 break;
             }
             case 9: {
-                std::string data, key, crypt_option;
+                std::string data, key;
                 std::cout << "cipher> Enter data: ";
                 getline(std::cin, data);
                 std::cout << "cipher> Enter key: ";
                 std::cin >> key;
                 VigenereCipher obj(data, key);
-                std::cout << "cipher> Encrypt/Decrypt: ";
-                std::cin >> crypt_option;
-                if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                    std::cout << "cipher> Encrypted data: " << obj.encrypt() << std::endl;
-                }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                    std::cout << "cipher> Decrypted data: " << obj.decrypt() << std::endl;
-                }else{
-                    std::cout << "cipher> [!] Choose a correct option." << std::endl;
-                }
+                crypt(&obj);
                 break;
             }
             case 10: {
+                bool flag = true;
                 std::cout << std::endl << FILE_MENU << std::endl;
-                int file_option;
-                std::cout << "\n(file) cipher> Enter option: ";
-                std::cin >> file_option;
-                std::cin.ignore();
-                switch(file_option){
-                    case 1: {
-                        std::string file_path, crypt_option;
-                        std::cout << "(file) cipher> Enter file path: ";
-                        getline(std::cin, file_path);
-                        ASCIICode obj(file_path, true);
-                        std::cout << "(file) cipher> Encrypt/Decrypt: ";
-                        std::cin >> crypt_option;
-                        if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                            obj.encrypt();
-                            std::cout << "(file) cipher> [+] File encrypted." << std::endl;
-                        }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                            obj.decrypt();
-                            std::cout << "(file) cipher> [+] File decrypted." << std::endl;
-                        }else{
-                            std::cout << "(file) cipher> [!] Choose a correct option." << std::endl;
+                while(flag) {
+                    int file_option;
+                    std::cout << "\n(file) cipher> Enter option: ";
+                    std::cin >> file_option;
+                    std::cin.ignore();
+                    switch(file_option){
+                        case 1: {
+                            std::string file_path;
+                            std::cout << "(file) cipher> Enter file path: ";
+                            getline(std::cin, file_path);
+                            ASCIICode obj(file_path, true);
+                            cryptFile(&obj);
+                            break;
                         }
-                        break;
-                    }
-                    case 2: {
-                        std::string file_path, crypt_option;
-                        std::cout << "(file) cipher> Enter file path: ";
-                        getline(std::cin, file_path);
-                        AtbashCipher obj(file_path, true);
-                        std::cout << "(file) cipher> Encrypt/Decrypt: ";
-                        std::cin >> crypt_option;
-                        if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                            obj.encrypt();
-                            std::cout << "(file) cipher> [+] File encrypted." << std::endl;
-                        }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                            obj.decrypt();
-                            std::cout << "(file) cipher> [+] File decrypted." << std::endl;
-                        }else{
-                            std::cout << "(file) cipher> [!] Choose a correct option." << std::endl;
+                        case 2: {
+                            std::string file_path;
+                            std::cout << "(file) cipher> Enter file path: ";
+                            getline(std::cin, file_path);
+                            AtbashCipher obj(file_path, true);
+                            cryptFile(&obj);
+                            break;
                         }
-                        break;
-                    }
-                    case 3: {
-                        std::string file_path, crypt_option;
-                        std::cout << "(file) cipher> Enter file path: ";
-                        getline(std::cin, file_path);
-                        BinaryCode obj(file_path, true);
-                        std::cout << "(file) cipher> Encrypt/Decrypt: ";
-                        std::cin >> crypt_option;
-                        if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                            obj.encrypt();
-                            std::cout << "(file) cipher> [+] File encrypted." << std::endl;
-                        }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                            obj.decrypt();
-                            std::cout << "(file) cipher> [+] File decrypted." << std::endl;
-                        }else{
-                            std::cout << "(file) cipher> [!] Choose a correct option." << std::endl;
+                        case 3: {
+                            std::string file_path;
+                            std::cout << "(file) cipher> Enter file path: ";
+                            getline(std::cin, file_path);
+                            BinaryCode obj(file_path, true);
+                            cryptFile(&obj);
+                            break;
                         }
-                        break;
-                    }
-                    case 4: {
-                        std::string file_path, crypt_option;
-                        unsigned int key;
-                        std::cout << "(file) cipher> Enter file path: ";
-                        getline(std::cin, file_path);
-                        std::cout << "(file) cipher> Enter key (offset): ";
-                        std::cin >> key;
-                        CaesarCipher obj(file_path, key, true);
-                        std::cout << "(file) cipher> Encrypt/Decrypt: ";
-                        std::cin >> crypt_option;
-                        if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                            obj.encrypt();
-                            std::cout << "(file) cipher> [+] File encrypted." << std::endl;
-                        }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                            obj.decrypt();
-                            std::cout << "(file) cipher> [+] File decrypted." << std::endl;
-                        }else{
-                            std::cout << "(file) cipher> [!] Choose a correct option." << std::endl;
+                        case 4: {
+                            std::string file_path;
+                            unsigned int key;
+                            std::cout << "(file) cipher> Enter file path: ";
+                            getline(std::cin, file_path);
+                            std::cout << "(file) cipher> Enter key (offset): ";
+                            std::cin >> key;
+                            CaesarCipher obj(file_path, key, true);
+                            cryptFile(&obj);
+                            break;
                         }
-                        break;
-                    }
-                    case 5: {
-                        std::string file_path, crypt_option;
-                        std::cout << "(file) cipher> Enter file path: ";
-                        getline(std::cin, file_path);
-                        HexCode obj(file_path, true);
-                        std::cout << "(file) cipher> Encrypt/Decrypt: ";
-                        std::cin >> crypt_option;
-                        if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                            obj.encrypt();
-                            std::cout << "(file) cipher> [+] File encrypted." << std::endl;
-                        }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                            obj.decrypt();
-                            std::cout << "(file) cipher> [+] File decrypted." << std::endl;
-                        }else{
-                            std::cout << "(file) cipher> [!] Choose a correct option." << std::endl;
+                        case 5: {
+                            std::string file_path;
+                            std::cout << "(file) cipher> Enter file path: ";
+                            getline(std::cin, file_path);
+                            HexCode obj(file_path, true);
+                            cryptFile(&obj);
+                            break;
                         }
-                        break;
-                    }
-                    case 6: {
-                        std::string file_path, crypt_option;
-                        std::cout << "(file) cipher> Enter file path: ";
-                        getline(std::cin, file_path);
-                        MorseCode obj(file_path, true);
-                        std::cout << "(file) cipher> Encrypt/Decrypt: ";
-                        std::cin >> crypt_option;
-                        if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                            obj.encrypt();
-                            std::cout << "(file) cipher> [+] File encrypted." << std::endl;
-                        }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                            obj.decrypt();
-                            std::cout << "(file) cipher> [+] File decrypted." << std::endl;
-                        }else{
-                            std::cout << "(file) cipher> [!] Choose a correct option." << std::endl;
+                        case 6: {
+                            std::string file_path, crypt;
+                            std::cout << "(file) cipher> Enter file path: ";
+                            getline(std::cin, file_path);
+                            MorseCode obj(file_path, true);
+                            cryptFile(&obj);
+                            break;
                         }
-                        break;
-                    }
-                    case 7: {
-                        std::string file_path, crypt_option;
-                        std::cout << "(file) cipher> Enter file path: ";
-                        getline(std::cin, file_path);
-                        NATOPhoneticCode obj(file_path, true);
-                        std::cout << "(file) cipher> Encrypt/Decrypt: ";
-                        std::cin >> crypt_option;
-                        if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                            obj.encrypt();
-                            std::cout << "(file) cipher> [+] File encrypted." << std::endl;
-                        }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                            obj.decrypt();
-                            std::cout << "(file) cipher> [+] File decrypted." << std::endl;
-                        }else{
-                            std::cout << "(file) cipher> [!] Choose a correct option." << std::endl;
+                        case 7: {
+                            std::string file_path;
+                            std::cout << "(file) cipher> Enter file path: ";
+                            getline(std::cin, file_path);
+                            NATOPhoneticCode obj(file_path, true);
+                            cryptFile(&obj);
+                            break;
                         }
-                        break;
-                    }
-                    case 8: {
-                        std::string file_path, crypt_option;
-                        std::cout << "(file) cipher> Enter file path: ";
-                        getline(std::cin, file_path);
-                        OctalCode obj(file_path, true);
-                        std::cout << "(file) cipher> Encrypt/Decrypt: ";
-                        std::cin >> crypt_option;
-                        if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                            obj.encrypt();
-                            std::cout << "(file) cipher> [+] File encrypted." << std::endl;
-                        }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                            obj.decrypt();
-                            std::cout << "(file) cipher> [+] File decrypted." << std::endl;
-                        }else{
-                            std::cout << "(file) cipher> [!] Choose a correct option." << std::endl;
+                        case 8: {
+                            std::string file_path;
+                            std::cout << "(file) cipher> Enter file path: ";
+                            getline(std::cin, file_path);
+                            OctalCode obj(file_path, true);
+                            cryptFile(&obj);
+                            break;
                         }
-                        break;
-                    }
-                    case 9: {
-                        std::string file_path, key, crypt_option;
-                        std::cout << "(file) cipher> Enter file path: ";
-                        getline(std::cin, file_path);
-                        std::cout << "(file) cipher> Enter key: ";
-                        std::cin >> key;
-                        VigenereCipher obj(file_path, key, true);
-                        std::cout << "(file) cipher> Encrypt/Decrypt: ";
-                        std::cin >> crypt_option;
-                        if(crypt_option == "encrypt" || crypt_option == "Encrypt"){
-                            obj.encrypt();
-                            std::cout << "(file) cipher> [+] File encrypted." << std::endl;
-                        }else if(crypt_option == "decrypt" || crypt_option == "Decrypt"){
-                            obj.decrypt();
-                            std::cout << "(file) cipher> [+] File decrypted." << std::endl;
-                        }else{
-                            std::cout << "(file) cipher> [!] Choose a correct option." << std::endl;
+                        case 9: {
+                            std::string file_path, key;
+                            std::cout << "(file) cipher> Enter file path: ";
+                            getline(std::cin, file_path);
+                            std::cout << "(file) cipher> Enter key: ";
+                            std::cin >> key;
+                            VigenereCipher obj(file_path, key, true);
+                            cryptFile(&obj);
+                            break;
                         }
-                        break;
+                        case 10:
+                            flag = false;
+                            break;
+                        default:
+                            std::cout << "(file) cipher> [!] Choose a correct option." << std::endl;
+                            break;
                     }
                 }
                 break;

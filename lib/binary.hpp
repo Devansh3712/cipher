@@ -2,6 +2,7 @@
     C++ header file for "binary.cpp".
     @file binary.hpp
     @author Devansh Singh
+            Chirag Tyagi
     @brief Header file for initializing BinaryCode class.
     @date 01/03/2022
 */

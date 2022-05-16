@@ -2,6 +2,7 @@
     C++ header file for "atbash.cpp".
     @file atbash.hpp
     @author Devansh Singh
+            Chirag Tyagi
     @brief Header file for initializing AtbashCipher class.
     @date 01/03/2022
 */

@@ -2,6 +2,7 @@
     C++ header file for "hex.cpp".
     @file hex.hpp
     @author Devansh Singh
+            Chirag Tyagi
     @brief Header file for initializing HexCode class.
     @date 05/03/2022
 */

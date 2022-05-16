@@ -2,6 +2,7 @@
     C++ header file for "nato.cpp".
     @file nato.hpp
     @author Devansh Singh
+            Chirag Tyagi
     @brief Header file for initializing NATOPhoneticCode class.
     @date 04/03/2022
 */

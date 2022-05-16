@@ -2,6 +2,7 @@
     C++ header file for "ascii.cpp".
     @file ascii.hpp
     @author Devansh Singh
+            Chirag Tyagi
     @brief Header file for initializing ASCIICode class.
     @date 05/03/2022
 */

@@ -2,6 +2,7 @@
     Hex code C++ implementation.
     @file hex.cpp
     @author Devansh Singh
+            Chirag Tyagi
     @brief Hex code is a cipher where the ascii code of characters of the
     plaintext are converted to their hexadecimal equivalent.
     @date 05/03/2022
@@ -14,7 +15,7 @@
 /**
     Default constructor for the HexCode class.
 */
-HexCode::HexCode(){
+HexCode::HexCode() {
     is_file = false;
 }
 
@@ -23,11 +24,11 @@ HexCode::HexCode(){
     @param data Data to encrypt/decrypt.
     @param is_file Read/Write from a file. Defaults to false.
 */
-HexCode::HexCode(std::string data, bool is_file){
-    if(is_file){
+HexCode::HexCode(std::string data, bool is_file) {
+    if(is_file) {
         file_path = data;
         this->is_file = true;
-    }else{
+    }else {
         this->data = data;
         this->is_file = false;
     }
@@ -39,7 +40,7 @@ HexCode::HexCode(std::string data, bool is_file){
     @param obj Reference to HexCode object.
     @returns Reference to output stream.
 */
-std::ostream& operator<<(std::ostream &output, HexCode &obj){
+std::ostream& operator<<(std::ostream &output, HexCode &obj) {
     output << obj.data;
     return output;
 }
@@ -50,7 +51,7 @@ std::ostream& operator<<(std::ostream &output, HexCode &obj){
     @param obj Reference to HexCode object.
     @returns Reference to input stream.
 */
-std::istream& operator>>(std::istream &input, HexCode &obj){
+std::istream& operator>>(std::istream &input, HexCode &obj) {
     std::getline(input, obj.data);
     return input;
 }
@@ -59,22 +60,22 @@ std::istream& operator>>(std::istream &input, HexCode &obj){
     Encrypt the plaintext.
     @returns Encrypted ciphertext.
 */
-std::string HexCode::encrypt(){
-    if(is_file){
+std::string HexCode::encrypt() {
+    if(is_file) {
         FileIO file(file_path);
         data = file.read();
     }
     std::string result = "";
-    for(int index = 0; index < data.length(); index++){
+    for(int index = 0; index < data.length(); index++ ){
         std::ostringstream hexadecimal;
         hexadecimal << std::hex << (int)data[index];
         result += hexadecimal.str();
-        if(index != data.length() - 1){
+        if(index != data.length() - 1) {
             result += std::string(" ");
         }
     }
     data = result;
-    if(is_file){
+    if(is_file) {
         FileIO file(file_path);
         return (file.write(data) == true ? "0" : "1");
     }
@@ -85,25 +86,25 @@ std::string HexCode::encrypt(){
     Decrypt the ciphertext.
     @returns Decrypted plaintext.
 */
-std::string HexCode::decrypt(){
-    if(is_file){
+std::string HexCode::decrypt() {
+    if(is_file) {
         FileIO file(file_path);
         data = file.read();
     }
     std::vector<std::string> chars;
     std::string current = "", result = "";
-    for(int index = 0; index < data.length(); index++){
-        if(data[index] != ' '){
+    for(int index = 0; index < data.length(); index++) {
+        if(data[index] != ' ') {
             current += data[index];
-        }else{
+        }else {
             chars.push_back(current);
             current = "";
         }
     }
-    if(current.length()){
+    if(current.length()) {
         chars.push_back(current);
     }
-    for(auto item: chars){
+    for(auto item: chars) {
         std::ostringstream decimal;
         int num;
         std::istringstream(item) >> std::hex >> num;
@@ -111,7 +112,7 @@ std::string HexCode::decrypt(){
         result += (char)std::stoi(decimal.str());
     }
     data = result;
-    if(is_file){
+    if(is_file) {
         FileIO file(file_path);
         return (file.write(data) == true ? "0" : "1");
     }

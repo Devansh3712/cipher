@@ -2,6 +2,7 @@
     C++ header file for "caesar.cpp".
     @file caesar.hpp
     @author Devansh Singh
+            Chirag Tyagi
     @brief Header file for initializing CaesarCipher class.
     @date 01/03/2022
 */

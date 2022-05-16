@@ -2,6 +2,7 @@
     Atbash cipher C++ implementation.
     @file atbash.cpp
     @author Devansh Singh
+            Chirag Tyagi
     @brief Atbash cipher is a substitution cipher where all the letters are
     reversed in order.
     @date 01/03/2022
@@ -13,7 +14,7 @@
 /**
     Default constructor for the AtbashCipher class.
 */
-AtbashCipher::AtbashCipher(){
+AtbashCipher::AtbashCipher() {
     is_file = false;
     create_dict();
 }
@@ -23,11 +24,11 @@ AtbashCipher::AtbashCipher(){
     @param data Data to encrypt/decrypt.
     @param is_file Read/Write from a file. Defaults to false.
 */
-AtbashCipher::AtbashCipher(std::string data, bool is_file){
-    if(is_file){
+AtbashCipher::AtbashCipher(std::string data, bool is_file) {
+    if(is_file) {
         file_path = data;
         this->is_file = true;
-    }else{
+    }else {
         this->data = data;
         this->is_file = false;
     }
@@ -40,7 +41,7 @@ AtbashCipher::AtbashCipher(std::string data, bool is_file){
     @param obj Reference to AtbashCipher object.
     @returns Reference to output stream.
 */
-std::ostream& operator<<(std::ostream &output, AtbashCipher &obj){
+std::ostream& operator<<(std::ostream &output, AtbashCipher &obj) {
     output << obj.data;
     return output;
 }
@@ -51,7 +52,7 @@ std::ostream& operator<<(std::ostream &output, AtbashCipher &obj){
     @param obj Reference to AtbashCipher object.
     @returns Reference to input stream.
 */
-std::istream& operator>>(std::istream &input, AtbashCipher &obj){
+std::istream& operator>>(std::istream &input, AtbashCipher &obj) {
     std::getline(input, obj.data);
     return input;
 }
@@ -60,19 +61,19 @@ std::istream& operator>>(std::istream &input, AtbashCipher &obj){
     Encrypt the plaintext.
     @returns Encrypted ciphertext.
 */
-std::string AtbashCipher::encrypt(){
+std::string AtbashCipher::encrypt() {
     if(is_file){
         FileIO file(file_path);
         data = file.read();
     }
-    for(int index = 0; index < data.length(); index++){
-        if(data[index] >= 'A' && data[index] <= 'Z'){
+    for(int index = 0; index < data.length(); index++) {
+        if(data[index] >= 'A' && data[index] <= 'Z') {
             data[index] = dict[data[index]];
-        }else if(data[index] >= 'a' && data[index] <= 'z'){
+        }else if(data[index] >= 'a' && data[index] <= 'z') {
             data[index] = std::tolower(dict[std::toupper(data[index])]);
         }
     }
-    if(is_file){
+    if(is_file) {
         FileIO file(file_path);
         return (file.write(data) == true ? "0" : "1");
     }
@@ -83,19 +84,19 @@ std::string AtbashCipher::encrypt(){
     Decrypt the ciphertext.
     @returns Decrypted plaintext.
 */
-std::string AtbashCipher::decrypt(){
+std::string AtbashCipher::decrypt() {
     if(is_file){
         FileIO file(file_path);
         data = file.read();
     }
-    for(int index = 0; index < data.length(); index++){
-        if(data[index] >= 'A' && data[index] <= 'Z'){
+    for(int index = 0; index < data.length(); index++) {
+        if(data[index] >= 'A' && data[index] <= 'Z') {
             data[index] = dict[data[index]];
-        }else if(data[index] >= 'a' && data[index] <= 'z'){
+        }else if(data[index] >= 'a' && data[index] <= 'z') {
             data[index] = std::tolower(dict[std::toupper(data[index])]);
         }
     }
-    if(is_file){
+    if(is_file) {
         FileIO file(file_path);
         return (file.write(data) == true ? "0" : "1");
     }

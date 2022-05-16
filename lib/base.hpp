@@ -2,6 +2,7 @@
     C++ Header file for base class Cipher inherited by every other class.
     @file base.hpp
     @author Devansh Singh
+            Chirag Tyagi
     @brief Contains Cipher base class.
     @date 11/05/2022
 */

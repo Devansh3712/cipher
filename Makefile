@@ -7,7 +7,11 @@ test: test_ascii test_atbash test_binary test_caesar test_hex test_morse test_na
 .PHONY: cipher
 cipher: main.cpp $(DEPS)
 	g++ -o cipher main.cpp $(DEPS)
+ifeq ($(OS),Windows_NT)
 	./cipher.exe
+else
+	./cipher
+endif
 
 .PHONY: test_ascii
 test_ascii: tests/test_ascii.cpp lib/ascii.cpp $(FILE)
@@ -56,4 +60,8 @@ test_vigenere: tests/test_vigenere.cpp lib/vigenere.cpp $(FILE)
 
 .PHONY: clean
 clean:
-	erase *.exe
+ifeq ($(OS),Windows_NT)
+	erase ./cipher.exe
+else
+	rm -rf ./cipher
+endif

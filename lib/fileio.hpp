@@ -2,6 +2,7 @@
     C++ header file for "files.cpp".
     @file fileio.hpp
     @author Devansh Singh
+            Chirag Tyagi
     @brief Header file for initializing FileIO class.
     @date 06/03/2022
 */
@@ -13,7 +14,7 @@
 /**
     Implementation of file read and write methods.
 */
-class FileIO{
+class FileIO {
 private:
     std::string file_path;
 public:

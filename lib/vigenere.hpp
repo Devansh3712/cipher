@@ -2,6 +2,7 @@
     C++ header file for "vigenere.cpp".
     @file vigenere.hpp
     @author Devansh Singh
+            Chirag Tyagi
     @brief Header file for initializing VigenereCipher class.
     @date 01/03/2022
 */

@@ -2,6 +2,7 @@
     C++ header file for "morse.cpp".
     @file morse.hpp
     @author Devansh Singh
+            Chirag Tyagi
     @brief Header file for initializing MorseCode class.
     @date 03/03/2022
 */
